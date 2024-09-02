@@ -46,7 +46,7 @@ MVI는 이러한 문제를 해결하기 위해 다음과 같은 장점을 제공
 
 ## 프로젝트 구조 🗂️
 
-이 프로젝트는 **Clean Architecture** 원칙을 준수하며, `core`, `data`, `domain`, `presentation`의 네 가지 모듈로 구성됩니다.
+이 프로젝트는 **Google Architecture** 원칙을 준수하며, `core`, `data`, `domain`, `presentation`의 네 가지 모듈로 구성됩니다.
 
 ```
 com.example.composemvi
