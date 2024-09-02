@@ -1,0 +1,48 @@
+# Android/IntelliJ 관련 파일
+*.iml
+.gradle/
+local.properties
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/misc.xml
+.idea/copyright/
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/codeStyles/
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/.name
+.idea/httpRequests/
+.idea/gradle.xml
+
+# 빌드 폴더
+build/
+app/build/
+**/build/
+
+# NDK 관련 파일
+obj/
+
+# Gradle Wrapper 관련 파일
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+
+# 로컬 설정 파일
+gradle.properties
+
+# 키스토어 파일
+*.jks
+*.keystore
+
+# 로그 파일
+*.log
+
+# OS 별 파일
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
