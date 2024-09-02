@@ -1,0 +1,13 @@
+root = true
+
+[*.{kt,kts}]
+ktlint_function_naming_ignore_when_annotated_with = Composable, Test
+indent_size = 4
+indent_style = space
+max_line_length = 120
+insert_final_newline = true
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ktlint_code_style = android_studio
+ktlint_standard_import-ordering = disabled
+
