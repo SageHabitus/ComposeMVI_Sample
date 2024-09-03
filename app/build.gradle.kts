@@ -107,6 +107,8 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.fragment)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.core.ktx)
+    implementation(libs.androidx.runner)
     kapt(libs.hilt.android.compiler)
 
     implementation(libs.room.runtime)
@@ -129,6 +131,8 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.core.ktx)
     androidTestImplementation(libs.androidx.espresso.core)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
@@ -138,4 +142,5 @@ dependencies {
     androidTestImplementation(libs.mockk.android)
     kaptAndroidTest(libs.hilt.android.compiler)
     androidTestImplementation(libs.hilt.testing)
+    testImplementation(libs.robolectric)
 }
