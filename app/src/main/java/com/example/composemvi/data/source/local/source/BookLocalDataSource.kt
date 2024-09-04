@@ -9,8 +9,6 @@ interface BookLocalDataSource {
 
     fun selectAllBooks(): PagingSource<Int, BookEntity>
 
-    suspend fun selectAllTest(isBookmarked: Boolean): List<BookEntity>
-
     suspend fun selectBookByIsbn(isbn: String): BookEntity
 
     suspend fun insertBook(entity: BookEntity)

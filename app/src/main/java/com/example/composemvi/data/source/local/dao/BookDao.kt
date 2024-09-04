@@ -12,9 +12,6 @@ interface BookDao {
     @Query("SELECT * FROM book")
     fun selectAll(): PagingSource<Int, BookEntity>
 
-    @Query("SELECT * FROM book WHERE is_bookmarked = :isBookmarked")
-    suspend fun selectAllTest(isBookmarked: Boolean): List<BookEntity>
-
     @Query("SELECT * FROM book WHERE isbn = :isbn")
     suspend fun selectByIsbn(isbn: String): BookEntity
 

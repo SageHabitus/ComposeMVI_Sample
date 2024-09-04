@@ -49,6 +49,10 @@ android {
             useSupportLibrary = true
         }
 
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        }
+
         val secretsPropertiesFile = rootProject.file("secrets.properties")
         if (secretsPropertiesFile.exists()) {
             val properties = Properties()
@@ -58,9 +62,7 @@ android {
 
             val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
             buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey)
-            println("KAKAO_API_KEY: ${System.getenv("KAKAO_API_KEY") ?: "No key found"}")
         } else {
-            println("KAKAO_API_KEY: ${System.getenv("KAKAO_API_KEY") ?: "No key found"}")
             val kakaoApiKey = System.getenv("KAKAO_API_KEY")
             if (!kakaoApiKey.isNullOrBlank()) {
                 buildConfigField("String", "KAKAO_API_KEY", "\"$kakaoApiKey\"")
