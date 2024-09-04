@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -31,16 +33,6 @@ ktlint {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-    arguments {
-        arg("dagger.fastInit", "enabled")
-        arg("dagger.hilt.android.internal.disableAndroidSuperclassValidation", "true")
-        arg("dagger.hilt.android.internal.projectType", "APP")
-        arg("dagger.hilt.internal.useAggregatingRootProcessor", "false")
-    }
-}
-
 android {
     namespace = "com.example.composemvi_sample"
     compileSdk = 34
@@ -60,6 +52,26 @@ android {
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
         }
+
+        val secretsPropertiesFile = rootProject.file("secrets.properties")
+        if (secretsPropertiesFile.exists()) {
+            val properties = Properties()
+            properties.load(secretsPropertiesFile.inputStream())
+            val kakaoApiKey = properties.getProperty("KAKAO_API_KEY", "")
+            ext["KAKAO_API_KEY"] = kakaoApiKey
+
+            val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
+            buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey)
+        } else {
+            val kakaoApiKey = System.getenv("KAKAO_API_KEY")
+            if (!kakaoApiKey.isNullOrBlank()) {
+                buildConfigField("String", "KAKAO_API_KEY", "\"$kakaoApiKey\"")
+            }
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -77,7 +89,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        languageVersion = "1.9"
     }
     buildFeatures {
         compose = true
@@ -111,6 +122,9 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.retrofit.converter.moshi)
 
     implementation(libs.landscapist.bom)
     implementation(libs.landscapist.coil)

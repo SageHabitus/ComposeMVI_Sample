@@ -28,7 +28,7 @@ app/build/
 obj/
 
 # 로컬 설정 파일
-gradle.properties
+/secrets.properties
 
 # 키스토어 파일 (개인 인증 관련 파일)
 *.jks
