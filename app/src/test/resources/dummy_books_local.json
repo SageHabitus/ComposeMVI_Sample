@@ -1,0 +1,1402 @@
+[
+    {
+        "isbn": "1",
+        "title": "Dummy Book 1",
+        "authors": [
+            "Author 1"
+        ],
+        "contents": "This is a summary of Dummy Book 1",
+        "publisher": "Publisher 1",
+        "price": 1000,
+        "salePrice": 900,
+        "thumbnail": "https://example.com/book1.jpg",
+        "url": "https://example.com/book1",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "2",
+        "title": "Dummy Book 2",
+        "authors": [
+            "Author 2"
+        ],
+        "contents": "This is a summary of Dummy Book 2",
+        "publisher": "Publisher 2",
+        "price": 2000,
+        "salePrice": 1800,
+        "thumbnail": "https://example.com/book2.jpg",
+        "url": "https://example.com/book2",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "3",
+        "title": "Dummy Book 3",
+        "authors": [
+            "Author 3"
+        ],
+        "contents": "This is a summary of Dummy Book 3",
+        "publisher": "Publisher 3",
+        "price": 3000,
+        "salePrice": 2700,
+        "thumbnail": "https://example.com/book3.jpg",
+        "url": "https://example.com/book3",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "4",
+        "title": "Dummy Book 4",
+        "authors": [
+            "Author 4"
+        ],
+        "contents": "This is a summary of Dummy Book 4",
+        "publisher": "Publisher 4",
+        "price": 4000,
+        "salePrice": 3600,
+        "thumbnail": "https://example.com/book4.jpg",
+        "url": "https://example.com/book4",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "5",
+        "title": "Dummy Book 5",
+        "authors": [
+            "Author 5"
+        ],
+        "contents": "This is a summary of Dummy Book 5",
+        "publisher": "Publisher 5",
+        "price": 5000,
+        "salePrice": 4500,
+        "thumbnail": "https://example.com/book5.jpg",
+        "url": "https://example.com/book5",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "6",
+        "title": "Dummy Book 6",
+        "authors": [
+            "Author 6"
+        ],
+        "contents": "This is a summary of Dummy Book 6",
+        "publisher": "Publisher 6",
+        "price": 6000,
+        "salePrice": 5400,
+        "thumbnail": "https://example.com/book6.jpg",
+        "url": "https://example.com/book6",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "7",
+        "title": "Dummy Book 7",
+        "authors": [
+            "Author 7"
+        ],
+        "contents": "This is a summary of Dummy Book 7",
+        "publisher": "Publisher 7",
+        "price": 7000,
+        "salePrice": 6300,
+        "thumbnail": "https://example.com/book7.jpg",
+        "url": "https://example.com/book7",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "8",
+        "title": "Dummy Book 8",
+        "authors": [
+            "Author 8"
+        ],
+        "contents": "This is a summary of Dummy Book 8",
+        "publisher": "Publisher 8",
+        "price": 8000,
+        "salePrice": 7200,
+        "thumbnail": "https://example.com/book8.jpg",
+        "url": "https://example.com/book8",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "9",
+        "title": "Dummy Book 9",
+        "authors": [
+            "Author 9"
+        ],
+        "contents": "This is a summary of Dummy Book 9",
+        "publisher": "Publisher 9",
+        "price": 9000,
+        "salePrice": 8100,
+        "thumbnail": "https://example.com/book9.jpg",
+        "url": "https://example.com/book9",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "10",
+        "title": "Dummy Book 10",
+        "authors": [
+            "Author 10"
+        ],
+        "contents": "This is a summary of Dummy Book 10",
+        "publisher": "Publisher 10",
+        "price": 10000,
+        "salePrice": 9000,
+        "thumbnail": "https://example.com/book10.jpg",
+        "url": "https://example.com/book10",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "11",
+        "title": "Dummy Book 11",
+        "authors": [
+            "Author 11"
+        ],
+        "contents": "This is a summary of Dummy Book 11",
+        "publisher": "Publisher 11",
+        "price": 11000,
+        "salePrice": 9900,
+        "thumbnail": "https://example.com/book11.jpg",
+        "url": "https://example.com/book11",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "12",
+        "title": "Dummy Book 12",
+        "authors": [
+            "Author 12"
+        ],
+        "contents": "This is a summary of Dummy Book 12",
+        "publisher": "Publisher 12",
+        "price": 12000,
+        "salePrice": 10800,
+        "thumbnail": "https://example.com/book12.jpg",
+        "url": "https://example.com/book12",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "13",
+        "title": "Dummy Book 13",
+        "authors": [
+            "Author 13"
+        ],
+        "contents": "This is a summary of Dummy Book 13",
+        "publisher": "Publisher 13",
+        "price": 13000,
+        "salePrice": 11700,
+        "thumbnail": "https://example.com/book13.jpg",
+        "url": "https://example.com/book13",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "14",
+        "title": "Dummy Book 14",
+        "authors": [
+            "Author 14"
+        ],
+        "contents": "This is a summary of Dummy Book 14",
+        "publisher": "Publisher 14",
+        "price": 14000,
+        "salePrice": 12600,
+        "thumbnail": "https://example.com/book14.jpg",
+        "url": "https://example.com/book14",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "15",
+        "title": "Dummy Book 15",
+        "authors": [
+            "Author 15"
+        ],
+        "contents": "This is a summary of Dummy Book 15",
+        "publisher": "Publisher 15",
+        "price": 15000,
+        "salePrice": 13500,
+        "thumbnail": "https://example.com/book15.jpg",
+        "url": "https://example.com/book15",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "16",
+        "title": "Dummy Book 16",
+        "authors": [
+            "Author 16"
+        ],
+        "contents": "This is a summary of Dummy Book 16",
+        "publisher": "Publisher 16",
+        "price": 16000,
+        "salePrice": 14400,
+        "thumbnail": "https://example.com/book16.jpg",
+        "url": "https://example.com/book16",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "17",
+        "title": "Dummy Book 17",
+        "authors": [
+            "Author 17"
+        ],
+        "contents": "This is a summary of Dummy Book 17",
+        "publisher": "Publisher 17",
+        "price": 17000,
+        "salePrice": 15300,
+        "thumbnail": "https://example.com/book17.jpg",
+        "url": "https://example.com/book17",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "18",
+        "title": "Dummy Book 18",
+        "authors": [
+            "Author 18"
+        ],
+        "contents": "This is a summary of Dummy Book 18",
+        "publisher": "Publisher 18",
+        "price": 18000,
+        "salePrice": 16200,
+        "thumbnail": "https://example.com/book18.jpg",
+        "url": "https://example.com/book18",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "19",
+        "title": "Dummy Book 19",
+        "authors": [
+            "Author 19"
+        ],
+        "contents": "This is a summary of Dummy Book 19",
+        "publisher": "Publisher 19",
+        "price": 19000,
+        "salePrice": 17100,
+        "thumbnail": "https://example.com/book19.jpg",
+        "url": "https://example.com/book19",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "20",
+        "title": "Dummy Book 20",
+        "authors": [
+            "Author 20"
+        ],
+        "contents": "This is a summary of Dummy Book 20",
+        "publisher": "Publisher 20",
+        "price": 20000,
+        "salePrice": 18000,
+        "thumbnail": "https://example.com/book20.jpg",
+        "url": "https://example.com/book20",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "21",
+        "title": "Dummy Book 21",
+        "authors": [
+            "Author 21"
+        ],
+        "contents": "This is a summary of Dummy Book 21",
+        "publisher": "Publisher 21",
+        "price": 21000,
+        "salePrice": 18900,
+        "thumbnail": "https://example.com/book21.jpg",
+        "url": "https://example.com/book21",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "22",
+        "title": "Dummy Book 22",
+        "authors": [
+            "Author 22"
+        ],
+        "contents": "This is a summary of Dummy Book 22",
+        "publisher": "Publisher 22",
+        "price": 22000,
+        "salePrice": 19800,
+        "thumbnail": "https://example.com/book22.jpg",
+        "url": "https://example.com/book22",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "23",
+        "title": "Dummy Book 23",
+        "authors": [
+            "Author 23"
+        ],
+        "contents": "This is a summary of Dummy Book 23",
+        "publisher": "Publisher 23",
+        "price": 23000,
+        "salePrice": 20700,
+        "thumbnail": "https://example.com/book23.jpg",
+        "url": "https://example.com/book23",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "24",
+        "title": "Dummy Book 24",
+        "authors": [
+            "Author 24"
+        ],
+        "contents": "This is a summary of Dummy Book 24",
+        "publisher": "Publisher 24",
+        "price": 24000,
+        "salePrice": 21600,
+        "thumbnail": "https://example.com/book24.jpg",
+        "url": "https://example.com/book24",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "25",
+        "title": "Dummy Book 25",
+        "authors": [
+            "Author 25"
+        ],
+        "contents": "This is a summary of Dummy Book 25",
+        "publisher": "Publisher 25",
+        "price": 25000,
+        "salePrice": 22500,
+        "thumbnail": "https://example.com/book25.jpg",
+        "url": "https://example.com/book25",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "26",
+        "title": "Dummy Book 26",
+        "authors": [
+            "Author 26"
+        ],
+        "contents": "This is a summary of Dummy Book 26",
+        "publisher": "Publisher 26",
+        "price": 26000,
+        "salePrice": 23400,
+        "thumbnail": "https://example.com/book26.jpg",
+        "url": "https://example.com/book26",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "27",
+        "title": "Dummy Book 27",
+        "authors": [
+            "Author 27"
+        ],
+        "contents": "This is a summary of Dummy Book 27",
+        "publisher": "Publisher 27",
+        "price": 27000,
+        "salePrice": 24300,
+        "thumbnail": "https://example.com/book27.jpg",
+        "url": "https://example.com/book27",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "28",
+        "title": "Dummy Book 28",
+        "authors": [
+            "Author 28"
+        ],
+        "contents": "This is a summary of Dummy Book 28",
+        "publisher": "Publisher 28",
+        "price": 28000,
+        "salePrice": 25200,
+        "thumbnail": "https://example.com/book28.jpg",
+        "url": "https://example.com/book28",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "29",
+        "title": "Dummy Book 29",
+        "authors": [
+            "Author 29"
+        ],
+        "contents": "This is a summary of Dummy Book 29",
+        "publisher": "Publisher 29",
+        "price": 29000,
+        "salePrice": 26100,
+        "thumbnail": "https://example.com/book29.jpg",
+        "url": "https://example.com/book29",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "30",
+        "title": "Dummy Book 30",
+        "authors": [
+            "Author 30"
+        ],
+        "contents": "This is a summary of Dummy Book 30",
+        "publisher": "Publisher 30",
+        "price": 30000,
+        "salePrice": 27000,
+        "thumbnail": "https://example.com/book30.jpg",
+        "url": "https://example.com/book30",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "31",
+        "title": "Dummy Book 31",
+        "authors": [
+            "Author 31"
+        ],
+        "contents": "This is a summary of Dummy Book 31",
+        "publisher": "Publisher 31",
+        "price": 31000,
+        "salePrice": 27900,
+        "thumbnail": "https://example.com/book31.jpg",
+        "url": "https://example.com/book31",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "32",
+        "title": "Dummy Book 32",
+        "authors": [
+            "Author 32"
+        ],
+        "contents": "This is a summary of Dummy Book 32",
+        "publisher": "Publisher 32",
+        "price": 32000,
+        "salePrice": 28800,
+        "thumbnail": "https://example.com/book32.jpg",
+        "url": "https://example.com/book32",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "33",
+        "title": "Dummy Book 33",
+        "authors": [
+            "Author 33"
+        ],
+        "contents": "This is a summary of Dummy Book 33",
+        "publisher": "Publisher 33",
+        "price": 33000,
+        "salePrice": 29700,
+        "thumbnail": "https://example.com/book33.jpg",
+        "url": "https://example.com/book33",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "34",
+        "title": "Dummy Book 34",
+        "authors": [
+            "Author 34"
+        ],
+        "contents": "This is a summary of Dummy Book 34",
+        "publisher": "Publisher 34",
+        "price": 34000,
+        "salePrice": 30600,
+        "thumbnail": "https://example.com/book34.jpg",
+        "url": "https://example.com/book34",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "35",
+        "title": "Dummy Book 35",
+        "authors": [
+            "Author 35"
+        ],
+        "contents": "This is a summary of Dummy Book 35",
+        "publisher": "Publisher 35",
+        "price": 35000,
+        "salePrice": 31500,
+        "thumbnail": "https://example.com/book35.jpg",
+        "url": "https://example.com/book35",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "36",
+        "title": "Dummy Book 36",
+        "authors": [
+            "Author 36"
+        ],
+        "contents": "This is a summary of Dummy Book 36",
+        "publisher": "Publisher 36",
+        "price": 36000,
+        "salePrice": 32400,
+        "thumbnail": "https://example.com/book36.jpg",
+        "url": "https://example.com/book36",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "37",
+        "title": "Dummy Book 37",
+        "authors": [
+            "Author 37"
+        ],
+        "contents": "This is a summary of Dummy Book 37",
+        "publisher": "Publisher 37",
+        "price": 37000,
+        "salePrice": 33300,
+        "thumbnail": "https://example.com/book37.jpg",
+        "url": "https://example.com/book37",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "38",
+        "title": "Dummy Book 38",
+        "authors": [
+            "Author 38"
+        ],
+        "contents": "This is a summary of Dummy Book 38",
+        "publisher": "Publisher 38",
+        "price": 38000,
+        "salePrice": 34200,
+        "thumbnail": "https://example.com/book38.jpg",
+        "url": "https://example.com/book38",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "39",
+        "title": "Dummy Book 39",
+        "authors": [
+            "Author 39"
+        ],
+        "contents": "This is a summary of Dummy Book 39",
+        "publisher": "Publisher 39",
+        "price": 39000,
+        "salePrice": 35100,
+        "thumbnail": "https://example.com/book39.jpg",
+        "url": "https://example.com/book39",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "40",
+        "title": "Dummy Book 40",
+        "authors": [
+            "Author 40"
+        ],
+        "contents": "This is a summary of Dummy Book 40",
+        "publisher": "Publisher 40",
+        "price": 40000,
+        "salePrice": 36000,
+        "thumbnail": "https://example.com/book40.jpg",
+        "url": "https://example.com/book40",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "41",
+        "title": "Dummy Book 41",
+        "authors": [
+            "Author 41"
+        ],
+        "contents": "This is a summary of Dummy Book 41",
+        "publisher": "Publisher 41",
+        "price": 41000,
+        "salePrice": 36900,
+        "thumbnail": "https://example.com/book41.jpg",
+        "url": "https://example.com/book41",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "42",
+        "title": "Dummy Book 42",
+        "authors": [
+            "Author 42"
+        ],
+        "contents": "This is a summary of Dummy Book 42",
+        "publisher": "Publisher 42",
+        "price": 42000,
+        "salePrice": 37800,
+        "thumbnail": "https://example.com/book42.jpg",
+        "url": "https://example.com/book42",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "43",
+        "title": "Dummy Book 43",
+        "authors": [
+            "Author 43"
+        ],
+        "contents": "This is a summary of Dummy Book 43",
+        "publisher": "Publisher 43",
+        "price": 43000,
+        "salePrice": 38700,
+        "thumbnail": "https://example.com/book43.jpg",
+        "url": "https://example.com/book43",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "44",
+        "title": "Dummy Book 44",
+        "authors": [
+            "Author 44"
+        ],
+        "contents": "This is a summary of Dummy Book 44",
+        "publisher": "Publisher 44",
+        "price": 44000,
+        "salePrice": 39600,
+        "thumbnail": "https://example.com/book44.jpg",
+        "url": "https://example.com/book44",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "45",
+        "title": "Dummy Book 45",
+        "authors": [
+            "Author 45"
+        ],
+        "contents": "This is a summary of Dummy Book 45",
+        "publisher": "Publisher 45",
+        "price": 45000,
+        "salePrice": 40500,
+        "thumbnail": "https://example.com/book45.jpg",
+        "url": "https://example.com/book45",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "46",
+        "title": "Dummy Book 46",
+        "authors": [
+            "Author 46"
+        ],
+        "contents": "This is a summary of Dummy Book 46",
+        "publisher": "Publisher 46",
+        "price": 46000,
+        "salePrice": 41400,
+        "thumbnail": "https://example.com/book46.jpg",
+        "url": "https://example.com/book46",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "47",
+        "title": "Dummy Book 47",
+        "authors": [
+            "Author 47"
+        ],
+        "contents": "This is a summary of Dummy Book 47",
+        "publisher": "Publisher 47",
+        "price": 47000,
+        "salePrice": 42300,
+        "thumbnail": "https://example.com/book47.jpg",
+        "url": "https://example.com/book47",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "48",
+        "title": "Dummy Book 48",
+        "authors": [
+            "Author 48"
+        ],
+        "contents": "This is a summary of Dummy Book 48",
+        "publisher": "Publisher 48",
+        "price": 48000,
+        "salePrice": 43200,
+        "thumbnail": "https://example.com/book48.jpg",
+        "url": "https://example.com/book48",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "49",
+        "title": "Dummy Book 49",
+        "authors": [
+            "Author 49"
+        ],
+        "contents": "This is a summary of Dummy Book 49",
+        "publisher": "Publisher 49",
+        "price": 49000,
+        "salePrice": 44100,
+        "thumbnail": "https://example.com/book49.jpg",
+        "url": "https://example.com/book49",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "50",
+        "title": "Dummy Book 50",
+        "authors": [
+            "Author 50"
+        ],
+        "contents": "This is a summary of Dummy Book 50",
+        "publisher": "Publisher 50",
+        "price": 50000,
+        "salePrice": 45000,
+        "thumbnail": "https://example.com/book50.jpg",
+        "url": "https://example.com/book50",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "51",
+        "title": "Dummy Book 51",
+        "authors": [
+            "Author 51"
+        ],
+        "contents": "This is a summary of Dummy Book 51",
+        "publisher": "Publisher 51",
+        "price": 51000,
+        "salePrice": 45900,
+        "thumbnail": "https://example.com/book51.jpg",
+        "url": "https://example.com/book51",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "52",
+        "title": "Dummy Book 52",
+        "authors": [
+            "Author 52"
+        ],
+        "contents": "This is a summary of Dummy Book 52",
+        "publisher": "Publisher 52",
+        "price": 52000,
+        "salePrice": 46800,
+        "thumbnail": "https://example.com/book52.jpg",
+        "url": "https://example.com/book52",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "53",
+        "title": "Dummy Book 53",
+        "authors": [
+            "Author 53"
+        ],
+        "contents": "This is a summary of Dummy Book 53",
+        "publisher": "Publisher 53",
+        "price": 53000,
+        "salePrice": 47700,
+        "thumbnail": "https://example.com/book53.jpg",
+        "url": "https://example.com/book53",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "54",
+        "title": "Dummy Book 54",
+        "authors": [
+            "Author 54"
+        ],
+        "contents": "This is a summary of Dummy Book 54",
+        "publisher": "Publisher 54",
+        "price": 54000,
+        "salePrice": 48600,
+        "thumbnail": "https://example.com/book54.jpg",
+        "url": "https://example.com/book54",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "55",
+        "title": "Dummy Book 55",
+        "authors": [
+            "Author 55"
+        ],
+        "contents": "This is a summary of Dummy Book 55",
+        "publisher": "Publisher 55",
+        "price": 55000,
+        "salePrice": 49500,
+        "thumbnail": "https://example.com/book55.jpg",
+        "url": "https://example.com/book55",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "56",
+        "title": "Dummy Book 56",
+        "authors": [
+            "Author 56"
+        ],
+        "contents": "This is a summary of Dummy Book 56",
+        "publisher": "Publisher 56",
+        "price": 56000,
+        "salePrice": 50400,
+        "thumbnail": "https://example.com/book56.jpg",
+        "url": "https://example.com/book56",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "57",
+        "title": "Dummy Book 57",
+        "authors": [
+            "Author 57"
+        ],
+        "contents": "This is a summary of Dummy Book 57",
+        "publisher": "Publisher 57",
+        "price": 57000,
+        "salePrice": 51300,
+        "thumbnail": "https://example.com/book57.jpg",
+        "url": "https://example.com/book57",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "58",
+        "title": "Dummy Book 58",
+        "authors": [
+            "Author 58"
+        ],
+        "contents": "This is a summary of Dummy Book 58",
+        "publisher": "Publisher 58",
+        "price": 58000,
+        "salePrice": 52200,
+        "thumbnail": "https://example.com/book58.jpg",
+        "url": "https://example.com/book58",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "59",
+        "title": "Dummy Book 59",
+        "authors": [
+            "Author 59"
+        ],
+        "contents": "This is a summary of Dummy Book 59",
+        "publisher": "Publisher 59",
+        "price": 59000,
+        "salePrice": 53100,
+        "thumbnail": "https://example.com/book59.jpg",
+        "url": "https://example.com/book59",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "60",
+        "title": "Dummy Book 60",
+        "authors": [
+            "Author 60"
+        ],
+        "contents": "This is a summary of Dummy Book 60",
+        "publisher": "Publisher 60",
+        "price": 60000,
+        "salePrice": 54000,
+        "thumbnail": "https://example.com/book60.jpg",
+        "url": "https://example.com/book60",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "61",
+        "title": "Dummy Book 61",
+        "authors": [
+            "Author 61"
+        ],
+        "contents": "This is a summary of Dummy Book 61",
+        "publisher": "Publisher 61",
+        "price": 61000,
+        "salePrice": 54900,
+        "thumbnail": "https://example.com/book61.jpg",
+        "url": "https://example.com/book61",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "62",
+        "title": "Dummy Book 62",
+        "authors": [
+            "Author 62"
+        ],
+        "contents": "This is a summary of Dummy Book 62",
+        "publisher": "Publisher 62",
+        "price": 62000,
+        "salePrice": 55800,
+        "thumbnail": "https://example.com/book62.jpg",
+        "url": "https://example.com/book62",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "63",
+        "title": "Dummy Book 63",
+        "authors": [
+            "Author 63"
+        ],
+        "contents": "This is a summary of Dummy Book 63",
+        "publisher": "Publisher 63",
+        "price": 63000,
+        "salePrice": 56700,
+        "thumbnail": "https://example.com/book63.jpg",
+        "url": "https://example.com/book63",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "64",
+        "title": "Dummy Book 64",
+        "authors": [
+            "Author 64"
+        ],
+        "contents": "This is a summary of Dummy Book 64",
+        "publisher": "Publisher 64",
+        "price": 64000,
+        "salePrice": 57600,
+        "thumbnail": "https://example.com/book64.jpg",
+        "url": "https://example.com/book64",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "65",
+        "title": "Dummy Book 65",
+        "authors": [
+            "Author 65"
+        ],
+        "contents": "This is a summary of Dummy Book 65",
+        "publisher": "Publisher 65",
+        "price": 65000,
+        "salePrice": 58500,
+        "thumbnail": "https://example.com/book65.jpg",
+        "url": "https://example.com/book65",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "66",
+        "title": "Dummy Book 66",
+        "authors": [
+            "Author 66"
+        ],
+        "contents": "This is a summary of Dummy Book 66",
+        "publisher": "Publisher 66",
+        "price": 66000,
+        "salePrice": 59400,
+        "thumbnail": "https://example.com/book66.jpg",
+        "url": "https://example.com/book66",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "67",
+        "title": "Dummy Book 67",
+        "authors": [
+            "Author 67"
+        ],
+        "contents": "This is a summary of Dummy Book 67",
+        "publisher": "Publisher 67",
+        "price": 67000,
+        "salePrice": 60300,
+        "thumbnail": "https://example.com/book67.jpg",
+        "url": "https://example.com/book67",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "68",
+        "title": "Dummy Book 68",
+        "authors": [
+            "Author 68"
+        ],
+        "contents": "This is a summary of Dummy Book 68",
+        "publisher": "Publisher 68",
+        "price": 68000,
+        "salePrice": 61200,
+        "thumbnail": "https://example.com/book68.jpg",
+        "url": "https://example.com/book68",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "69",
+        "title": "Dummy Book 69",
+        "authors": [
+            "Author 69"
+        ],
+        "contents": "This is a summary of Dummy Book 69",
+        "publisher": "Publisher 69",
+        "price": 69000,
+        "salePrice": 62100,
+        "thumbnail": "https://example.com/book69.jpg",
+        "url": "https://example.com/book69",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "70",
+        "title": "Dummy Book 70",
+        "authors": [
+            "Author 70"
+        ],
+        "contents": "This is a summary of Dummy Book 70",
+        "publisher": "Publisher 70",
+        "price": 70000,
+        "salePrice": 63000,
+        "thumbnail": "https://example.com/book70.jpg",
+        "url": "https://example.com/book70",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "71",
+        "title": "Dummy Book 71",
+        "authors": [
+            "Author 71"
+        ],
+        "contents": "This is a summary of Dummy Book 71",
+        "publisher": "Publisher 71",
+        "price": 71000,
+        "salePrice": 63900,
+        "thumbnail": "https://example.com/book71.jpg",
+        "url": "https://example.com/book71",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "72",
+        "title": "Dummy Book 72",
+        "authors": [
+            "Author 72"
+        ],
+        "contents": "This is a summary of Dummy Book 72",
+        "publisher": "Publisher 72",
+        "price": 72000,
+        "salePrice": 64800,
+        "thumbnail": "https://example.com/book72.jpg",
+        "url": "https://example.com/book72",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "73",
+        "title": "Dummy Book 73",
+        "authors": [
+            "Author 73"
+        ],
+        "contents": "This is a summary of Dummy Book 73",
+        "publisher": "Publisher 73",
+        "price": 73000,
+        "salePrice": 65700,
+        "thumbnail": "https://example.com/book73.jpg",
+        "url": "https://example.com/book73",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "74",
+        "title": "Dummy Book 74",
+        "authors": [
+            "Author 74"
+        ],
+        "contents": "This is a summary of Dummy Book 74",
+        "publisher": "Publisher 74",
+        "price": 74000,
+        "salePrice": 66600,
+        "thumbnail": "https://example.com/book74.jpg",
+        "url": "https://example.com/book74",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "75",
+        "title": "Dummy Book 75",
+        "authors": [
+            "Author 75"
+        ],
+        "contents": "This is a summary of Dummy Book 75",
+        "publisher": "Publisher 75",
+        "price": 75000,
+        "salePrice": 67500,
+        "thumbnail": "https://example.com/book75.jpg",
+        "url": "https://example.com/book75",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "76",
+        "title": "Dummy Book 76",
+        "authors": [
+            "Author 76"
+        ],
+        "contents": "This is a summary of Dummy Book 76",
+        "publisher": "Publisher 76",
+        "price": 76000,
+        "salePrice": 68400,
+        "thumbnail": "https://example.com/book76.jpg",
+        "url": "https://example.com/book76",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "77",
+        "title": "Dummy Book 77",
+        "authors": [
+            "Author 77"
+        ],
+        "contents": "This is a summary of Dummy Book 77",
+        "publisher": "Publisher 77",
+        "price": 77000,
+        "salePrice": 69300,
+        "thumbnail": "https://example.com/book77.jpg",
+        "url": "https://example.com/book77",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "78",
+        "title": "Dummy Book 78",
+        "authors": [
+            "Author 78"
+        ],
+        "contents": "This is a summary of Dummy Book 78",
+        "publisher": "Publisher 78",
+        "price": 78000,
+        "salePrice": 70200,
+        "thumbnail": "https://example.com/book78.jpg",
+        "url": "https://example.com/book78",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "79",
+        "title": "Dummy Book 79",
+        "authors": [
+            "Author 79"
+        ],
+        "contents": "This is a summary of Dummy Book 79",
+        "publisher": "Publisher 79",
+        "price": 79000,
+        "salePrice": 71100,
+        "thumbnail": "https://example.com/book79.jpg",
+        "url": "https://example.com/book79",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "80",
+        "title": "Dummy Book 80",
+        "authors": [
+            "Author 80"
+        ],
+        "contents": "This is a summary of Dummy Book 80",
+        "publisher": "Publisher 80",
+        "price": 80000,
+        "salePrice": 72000,
+        "thumbnail": "https://example.com/book80.jpg",
+        "url": "https://example.com/book80",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "81",
+        "title": "Dummy Book 81",
+        "authors": [
+            "Author 81"
+        ],
+        "contents": "This is a summary of Dummy Book 81",
+        "publisher": "Publisher 81",
+        "price": 81000,
+        "salePrice": 72900,
+        "thumbnail": "https://example.com/book81.jpg",
+        "url": "https://example.com/book81",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "82",
+        "title": "Dummy Book 82",
+        "authors": [
+            "Author 82"
+        ],
+        "contents": "This is a summary of Dummy Book 82",
+        "publisher": "Publisher 82",
+        "price": 82000,
+        "salePrice": 73800,
+        "thumbnail": "https://example.com/book82.jpg",
+        "url": "https://example.com/book82",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "83",
+        "title": "Dummy Book 83",
+        "authors": [
+            "Author 83"
+        ],
+        "contents": "This is a summary of Dummy Book 83",
+        "publisher": "Publisher 83",
+        "price": 83000,
+        "salePrice": 74700,
+        "thumbnail": "https://example.com/book83.jpg",
+        "url": "https://example.com/book83",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "84",
+        "title": "Dummy Book 84",
+        "authors": [
+            "Author 84"
+        ],
+        "contents": "This is a summary of Dummy Book 84",
+        "publisher": "Publisher 84",
+        "price": 84000,
+        "salePrice": 75600,
+        "thumbnail": "https://example.com/book84.jpg",
+        "url": "https://example.com/book84",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "85",
+        "title": "Dummy Book 85",
+        "authors": [
+            "Author 85"
+        ],
+        "contents": "This is a summary of Dummy Book 85",
+        "publisher": "Publisher 85",
+        "price": 85000,
+        "salePrice": 76500,
+        "thumbnail": "https://example.com/book85.jpg",
+        "url": "https://example.com/book85",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "86",
+        "title": "Dummy Book 86",
+        "authors": [
+            "Author 86"
+        ],
+        "contents": "This is a summary of Dummy Book 86",
+        "publisher": "Publisher 86",
+        "price": 86000,
+        "salePrice": 77400,
+        "thumbnail": "https://example.com/book86.jpg",
+        "url": "https://example.com/book86",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "87",
+        "title": "Dummy Book 87",
+        "authors": [
+            "Author 87"
+        ],
+        "contents": "This is a summary of Dummy Book 87",
+        "publisher": "Publisher 87",
+        "price": 87000,
+        "salePrice": 78300,
+        "thumbnail": "https://example.com/book87.jpg",
+        "url": "https://example.com/book87",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "88",
+        "title": "Dummy Book 88",
+        "authors": [
+            "Author 88"
+        ],
+        "contents": "This is a summary of Dummy Book 88",
+        "publisher": "Publisher 88",
+        "price": 88000,
+        "salePrice": 79200,
+        "thumbnail": "https://example.com/book88.jpg",
+        "url": "https://example.com/book88",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "89",
+        "title": "Dummy Book 89",
+        "authors": [
+            "Author 89"
+        ],
+        "contents": "This is a summary of Dummy Book 89",
+        "publisher": "Publisher 89",
+        "price": 89000,
+        "salePrice": 80100,
+        "thumbnail": "https://example.com/book89.jpg",
+        "url": "https://example.com/book89",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "90",
+        "title": "Dummy Book 90",
+        "authors": [
+            "Author 90"
+        ],
+        "contents": "This is a summary of Dummy Book 90",
+        "publisher": "Publisher 90",
+        "price": 90000,
+        "salePrice": 81000,
+        "thumbnail": "https://example.com/book90.jpg",
+        "url": "https://example.com/book90",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "91",
+        "title": "Dummy Book 91",
+        "authors": [
+            "Author 91"
+        ],
+        "contents": "This is a summary of Dummy Book 91",
+        "publisher": "Publisher 91",
+        "price": 91000,
+        "salePrice": 81900,
+        "thumbnail": "https://example.com/book91.jpg",
+        "url": "https://example.com/book91",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "92",
+        "title": "Dummy Book 92",
+        "authors": [
+            "Author 92"
+        ],
+        "contents": "This is a summary of Dummy Book 92",
+        "publisher": "Publisher 92",
+        "price": 92000,
+        "salePrice": 82800,
+        "thumbnail": "https://example.com/book92.jpg",
+        "url": "https://example.com/book92",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "93",
+        "title": "Dummy Book 93",
+        "authors": [
+            "Author 93"
+        ],
+        "contents": "This is a summary of Dummy Book 93",
+        "publisher": "Publisher 93",
+        "price": 93000,
+        "salePrice": 83700,
+        "thumbnail": "https://example.com/book93.jpg",
+        "url": "https://example.com/book93",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "94",
+        "title": "Dummy Book 94",
+        "authors": [
+            "Author 94"
+        ],
+        "contents": "This is a summary of Dummy Book 94",
+        "publisher": "Publisher 94",
+        "price": 94000,
+        "salePrice": 84600,
+        "thumbnail": "https://example.com/book94.jpg",
+        "url": "https://example.com/book94",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "95",
+        "title": "Dummy Book 95",
+        "authors": [
+            "Author 95"
+        ],
+        "contents": "This is a summary of Dummy Book 95",
+        "publisher": "Publisher 95",
+        "price": 95000,
+        "salePrice": 85500,
+        "thumbnail": "https://example.com/book95.jpg",
+        "url": "https://example.com/book95",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "96",
+        "title": "Dummy Book 96",
+        "authors": [
+            "Author 96"
+        ],
+        "contents": "This is a summary of Dummy Book 96",
+        "publisher": "Publisher 96",
+        "price": 96000,
+        "salePrice": 86400,
+        "thumbnail": "https://example.com/book96.jpg",
+        "url": "https://example.com/book96",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "97",
+        "title": "Dummy Book 97",
+        "authors": [
+            "Author 97"
+        ],
+        "contents": "This is a summary of Dummy Book 97",
+        "publisher": "Publisher 97",
+        "price": 97000,
+        "salePrice": 87300,
+        "thumbnail": "https://example.com/book97.jpg",
+        "url": "https://example.com/book97",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "98",
+        "title": "Dummy Book 98",
+        "authors": [
+            "Author 98"
+        ],
+        "contents": "This is a summary of Dummy Book 98",
+        "publisher": "Publisher 98",
+        "price": 98000,
+        "salePrice": 88200,
+        "thumbnail": "https://example.com/book98.jpg",
+        "url": "https://example.com/book98",
+        "isBookmarked": true
+    },
+    {
+        "isbn": "99",
+        "title": "Dummy Book 99",
+        "authors": [
+            "Author 99"
+        ],
+        "contents": "This is a summary of Dummy Book 99",
+        "publisher": "Publisher 99",
+        "price": 99000,
+        "salePrice": 89100,
+        "thumbnail": "https://example.com/book99.jpg",
+        "url": "https://example.com/book99",
+        "isBookmarked": false
+    },
+    {
+        "isbn": "100",
+        "title": "Dummy Book 100",
+        "authors": [
+            "Author 100"
+        ],
+        "contents": "This is a summary of Dummy Book 100",
+        "publisher": "Publisher 100",
+        "price": 100000,
+        "salePrice": 90000,
+        "thumbnail": "https://example.com/book100.jpg",
+        "url": "https://example.com/book100",
+        "isBookmarked": true
+    }
+]
