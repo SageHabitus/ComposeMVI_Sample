@@ -57,11 +57,12 @@ android {
             ext["KAKAO_API_KEY"] = kakaoApiKey
 
             val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
-            buildConfigField(
-                "String",
-                "KAKAO_API_KEY",
-                "\"${System.getenv("KAKAO_API_KEY") ?: properties["KAKAO_API_KEY"]}\"",
-            )
+            buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey) // 수정된 부분
+        } else {
+            val kakaoApiKey = System.getenv("KAKAO_API_KEY")
+            if (!kakaoApiKey.isNullOrBlank()) {
+                buildConfigField("String", "KAKAO_API_KEY", "\"$kakaoApiKey\"")
+            }
         }
     }
 
