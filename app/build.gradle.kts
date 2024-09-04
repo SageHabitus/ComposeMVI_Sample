@@ -31,6 +31,16 @@ ktlint {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+    arguments {
+        arg("dagger.fastInit", "enabled")
+        arg("dagger.hilt.android.internal.disableAndroidSuperclassValidation", "true")
+        arg("dagger.hilt.android.internal.projectType", "APP")
+        arg("dagger.hilt.internal.useAggregatingRootProcessor", "false")
+    }
+}
+
 android {
     namespace = "com.example.composemvi_sample"
     compileSdk = 34
@@ -45,6 +55,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
         }
     }
 
@@ -63,6 +77,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.9"
     }
     buildFeatures {
         compose = true

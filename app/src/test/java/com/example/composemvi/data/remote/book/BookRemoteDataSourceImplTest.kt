@@ -1,8 +1,6 @@
 package com.example.composemvi.data.remote.book
 
 import com.example.composemvi.data.source.remote.api.BookApi
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TIMEOUT_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiExceptionMapper
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import com.example.composemvi.data.source.remote.model.BookResponseModel
 import com.example.composemvi.data.source.remote.source.BookRemoteDataSource
@@ -18,7 +16,6 @@ import okio.source
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.nio.charset.StandardCharsets
@@ -89,6 +86,7 @@ class BookRemoteDataSourceImplTest {
     fun `404 에러 발생 시 NotFoundException 반환해야 한다`() = runBlocking {
         val mockResponse = MockResponse()
             .setResponseCode(404)
+            .addHeader("Content-Type", "application/json")
 
         mockWebServer.enqueue(mockResponse)
 
@@ -96,15 +94,14 @@ class BookRemoteDataSourceImplTest {
             bookRemoteDataSource.searchBooks("query", 1, 10)
         }.exceptionOrNull()
 
-        assertTrue(exception is HttpException)
-        val mappedException = ApiExceptionMapper.toException(exception)
-        assertTrue(mappedException is RemoteApiException.NotFoundException)
+        assertTrue(exception is RemoteApiException.NotFoundException)
     }
 
     @Test
     fun `401 에러 발생 시 UnauthorizedException 반환해야 한다`() = runBlocking {
         val mockResponse = MockResponse()
             .setResponseCode(401)
+            .addHeader("Content-Type", "application/json")
 
         mockWebServer.enqueue(mockResponse)
 
@@ -112,15 +109,14 @@ class BookRemoteDataSourceImplTest {
             bookRemoteDataSource.searchBooks("query", 1, 10)
         }.exceptionOrNull()
 
-        assertTrue(exception is HttpException)
-        val mappedException = ApiExceptionMapper.toException(exception)
-        assertTrue(mappedException is RemoteApiException.UnauthorizedException)
+        assertTrue(exception is RemoteApiException.UnauthorizedException)
     }
 
     @Test
     fun `500 에러 발생 시 InternalServerException 반환해야 한다`() = runBlocking {
         val mockResponse = MockResponse()
             .setResponseCode(500)
+            .addHeader("Content-Type", "application/json")
 
         mockWebServer.enqueue(mockResponse)
 
@@ -128,9 +124,7 @@ class BookRemoteDataSourceImplTest {
             bookRemoteDataSource.searchBooks("query", 1, 10)
         }.exceptionOrNull()
 
-        assertTrue(exception is HttpException)
-        val mappedException = ApiExceptionMapper.toException(exception)
-        assertTrue(mappedException is RemoteApiException.InternalServerException)
+        assertTrue(exception is RemoteApiException.InternalServerException)
     }
 
     @Test
@@ -146,18 +140,14 @@ class BookRemoteDataSourceImplTest {
             bookRemoteDataSource.searchBooks("query", 1, 10)
         }.exceptionOrNull()
 
-        assertTrue(exception is java.net.SocketTimeoutException)
-        val mappedException = ApiExceptionMapper.toException(exception)
-        assertTrue(mappedException is RemoteApiException.TimeoutException)
-
-        val defaultMessage = mappedException.message.takeIf { it.isNotEmpty() } ?: TIMEOUT_ERROR_MESSAGE
-        assertEquals(defaultMessage, mappedException.message)
+        assertTrue(exception is RemoteApiException.TimeoutException)
     }
 
     @Test
     fun `너무 많은 요청으로 429 에러 발생 시 TooManyRequestsException 반환해야 한다`() = runBlocking {
         val mockResponse = MockResponse()
             .setResponseCode(429)
+            .addHeader("Content-Type", "application/json")
 
         mockWebServer.enqueue(mockResponse)
 
@@ -165,8 +155,6 @@ class BookRemoteDataSourceImplTest {
             bookRemoteDataSource.searchBooks("query", 1, 10)
         }.exceptionOrNull()
 
-        assertTrue(exception is HttpException)
-        val mappedException = ApiExceptionMapper.toException(exception)
-        assertTrue(mappedException is RemoteApiException.TooManyRequestsException)
+        assertTrue(exception is RemoteApiException.TooManyRequestsException)
     }
 }
