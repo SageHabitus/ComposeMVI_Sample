@@ -22,12 +22,6 @@ class BookLocalDataSourceImpl @Inject constructor(
         throw DatabaseExceptionMapper.toException(exception)
     }
 
-    override suspend fun selectAllTest(isBookmarked: Boolean): List<BookEntity> = runCatching {
-        dao.selectAllTest(isBookmarked)
-    }.getOrElse { exception ->
-        throw DatabaseExceptionMapper.toException(exception)
-    }
-
     override suspend fun selectBookByIsbn(isbn: String): BookEntity = runCatching {
         dao.selectByIsbn(isbn)
     }.getOrElse { exception ->
