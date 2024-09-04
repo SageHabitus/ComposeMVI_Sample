@@ -12,7 +12,7 @@ class BookRemoteDataSourceImpl @Inject constructor(
     override suspend fun searchBooks(
         query: String,
         page: Int,
-        size: Int
+        size: Int,
     ): BookResponseModel = runCatching {
         api.searchBooks(query = query, page = page, size = size)
     }.getOrElse { exception ->
