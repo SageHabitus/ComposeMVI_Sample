@@ -27,14 +27,10 @@ app/build/
 # NDK 관련 파일
 obj/
 
-# Gradle Wrapper 관련 파일
-gradle/wrapper/gradle-wrapper.properties
-gradle/wrapper/gradle-wrapper.jar
-
 # 로컬 설정 파일
 gradle.properties
 
-# 키스토어 파일
+# 키스토어 파일 (개인 인증 관련 파일)
 *.jks
 *.keystore
 
