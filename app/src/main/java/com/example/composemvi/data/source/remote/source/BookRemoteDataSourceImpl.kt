@@ -9,12 +9,12 @@ class BookRemoteDataSourceImpl @Inject constructor(
     private val api: BookApi,
 ) : BookRemoteDataSource {
 
-    override suspend fun searchBooks(
-        query: String,
-        page: Int,
-        size: Int,
-    ): BookResponseModel = runCatching {
-        api.searchBooks(query = query, page = page, size = size)
+    override suspend fun searchBooks(query: String, page: Int, size: Int): BookResponseModel = runCatching {
+        api.searchBooks(
+            query = query,
+            page = page,
+            size = size,
+        )
     }.getOrElse { exception ->
         throw ApiExceptionMapper.toException(exception)
     }
