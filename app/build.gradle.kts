@@ -57,7 +57,11 @@ android {
             ext["KAKAO_API_KEY"] = kakaoApiKey
 
             val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
-            buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey)
+            buildConfigField(
+                "String",
+                "KAKAO_API_KEY",
+                "\"${System.getenv("KAKAO_API_KEY") ?: properties["KAKAO_API_KEY"]}\"",
+            )
         }
     }
 
