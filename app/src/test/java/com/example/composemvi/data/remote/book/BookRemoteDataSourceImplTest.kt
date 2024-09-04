@@ -1,7 +1,6 @@
 package com.example.composemvi.data.remote.book
 
 import com.example.composemvi.data.source.remote.api.BookApi
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TIMEOUT_ERROR_MESSAGE
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import com.example.composemvi.data.source.remote.model.BookResponseModel
 import com.example.composemvi.data.source.remote.source.BookRemoteDataSource
