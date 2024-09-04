@@ -36,7 +36,7 @@ class BookRemoteDataSourceImplTest {
     fun setup() {
         mockWebServer = MockWebServer()
 
-        dummyBooks = loadJsonFromResource("dummy_books.json")
+        dummyBooks = loadJsonFromResource("dummy_books_remote.json")
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
 
