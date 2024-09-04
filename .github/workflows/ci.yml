@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - devel
+      - main
 
 jobs:
   build:
@@ -30,8 +31,16 @@ jobs:
       - name: Clean Gradle build
         run: ./gradlew clean
 
-      - name: Print KAKAO_API_KEY
-        run: echo "KAKAO_API_KEY=${{ secrets.KAKAO_API_KEY }}"
+      - name: Verify KAKAO_API_KEY
+        run: |
+          if [ -z "${{ secrets.KAKAO_API_KEY }}" ]; then
+            echo "KAKAO_API_KEY is not set!"
+          else
+            echo "KAKAO_API_KEY is set"
+          fi
+
+      - name: Export KAKAO_API_KEY
+        run: echo "KAKAO_API_KEY=${{ secrets.KAKAO_API_KEY }}" >> $GITHUB_ENV
 
       - name: List project files
         run: ls -la ${{ github.workspace }}
@@ -40,6 +49,9 @@ jobs:
         run: ./gradlew build --stacktrace --info --debug
         env:
           KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
+
+      - name: Show generated BuildConfig
+        run: cat app/build/generated/source/buildConfig/debug/com/example/composemvi_sample/BuildConfig.java
 
       - name: Run unit tests
         run: ./gradlew test
