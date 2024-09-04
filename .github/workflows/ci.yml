@@ -6,9 +6,10 @@ on:
       - devel
       - main
       - 'feature_*'
-  pull_request:
+  pull_request_target:
     branches:
       - devel
+      - main
 
 jobs:
   build:
@@ -27,8 +28,30 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Clean Gradle build
+        run: ./gradlew clean
+
+      - name: Verify KAKAO_API_KEY
+        run: |
+          if [ -z "${{ secrets.KAKAO_API_KEY }}" ]; then
+            echo "KAKAO_API_KEY is not set!"
+          else
+            echo "KAKAO_API_KEY is set"
+          fi
+
+      - name: Export KAKAO_API_KEY
+        run: echo "KAKAO_API_KEY=${{ secrets.KAKAO_API_KEY }}" >> $GITHUB_ENV
+
+      - name: List project files
+        run: ls -la ${{ github.workspace }}
+
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --stacktrace --info --debug
+        env:
+          KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
+
+      - name: Show generated BuildConfig
+        run: cat app/build/generated/source/buildConfig/debug/com/example/composemvi_sample/BuildConfig.java
 
       - name: Run unit tests
-        run: ./gradlew test  # 단위 테스트 실행
+        run: ./gradlew test
