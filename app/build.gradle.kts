@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -46,6 +48,21 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val secretsPropertiesFile = rootProject.file("secrets.properties")
+        if (secretsPropertiesFile.exists()) {
+            val properties = Properties()
+            properties.load(secretsPropertiesFile.inputStream())
+            val kakaoApiKey = properties.getProperty("KAKAO_API_KEY", "")
+            ext["KAKAO_API_KEY"] = kakaoApiKey
+
+            val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
+            buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey)
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

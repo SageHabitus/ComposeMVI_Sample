@@ -29,6 +29,8 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+        env:
+          KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
 
       - name: Run unit tests
         run: ./gradlew test  # 단위 테스트 실행

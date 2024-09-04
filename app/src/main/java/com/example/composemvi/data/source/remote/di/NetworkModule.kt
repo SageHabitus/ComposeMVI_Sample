@@ -1,5 +1,6 @@
 package com.example.composemvi.data.source.remote.di
 
+import com.example.composemvi_sample.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,8 +38,10 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthorizationInterceptor(): AuthorizationInterceptor =
-        AuthorizationInterceptor("a2ca5c471c0a55555598031e7840facb")
+    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
+        val apiKey = BuildConfig.KAKAO_API_KEY
+        return AuthorizationInterceptor(apiKey)
+    }
 
     @Singleton
     @Provides
