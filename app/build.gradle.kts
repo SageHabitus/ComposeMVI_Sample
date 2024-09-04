@@ -96,9 +96,6 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.moshi)
-    implementation(libs.moshi.kotlin)
-    implementation(libs.retrofit.converter.moshi)
 
     implementation(libs.landscapist.bom)
     implementation(libs.landscapist.coil)

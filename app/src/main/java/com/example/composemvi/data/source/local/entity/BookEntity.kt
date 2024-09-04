@@ -3,10 +3,10 @@ package com.example.composemvi.data.source.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
 @Entity(tableName = "book")
-@JsonClass(generateAdapter = true)
+@Serializable
 data class BookEntity(
 
     @PrimaryKey
