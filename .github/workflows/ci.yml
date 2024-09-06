@@ -31,27 +31,23 @@ jobs:
       - name: Clean Gradle build
         run: ./gradlew clean
 
-      - name: Verify KAKAO_API_KEY
-        run: |
-          if [ -z "${{ secrets.KAKAO_API_KEY }}" ]; then
-            echo "KAKAO_API_KEY is not set!"
-          else
-            echo "KAKAO_API_KEY is set"
-          fi
-
-      - name: Export KAKAO_API_KEY
-        run: echo "KAKAO_API_KEY=${{ secrets.KAKAO_API_KEY }}" >> $GITHUB_ENV
-
-      - name: List project files
-        run: ls -la ${{ github.workspace }}
-
       - name: Build with Gradle
-        run: ./gradlew build --stacktrace --info --debug
+        run: ./gradlew build --stacktrace --info
         env:
           KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
 
-      - name: Show generated BuildConfig
-        run: cat app/build/generated/source/buildConfig/debug/com/example/composemvi_sample/BuildConfig.java
+
+      - name: Run ktlint
+        run: ./gradlew ktlintCheck --stacktrace --info || true
+
+      - name: Display ktlint report
+        if: failure()
+        run: cat app/build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.txt
+
+      - name: Fail on ktlint issues
+        if: failure()
+        run: exit 1
+
 
       - name: Run unit tests
         run: ./gradlew test
