@@ -19,5 +19,4 @@ object RoomExceptionMessage {
     const val TIMEOUT_ERROR_MESSAGE = "Operation timed out"
     const val PAGING_IO_ERROR_MESSAGE = "Paging I/O error"
     const val UNKNOWN_DATABASE_ERROR_MESSAGE = "Unknown database error"
-
 }

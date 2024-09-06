@@ -44,43 +44,39 @@ class BookRepositoryImpl @Inject constructor(
             }
     }
 
-    override suspend fun updateBookmarkStatus(isbn: String, isBookmarked: Boolean): Unit =
-        runCatching {
-            local.updateBookmarkStatus(isbn, isBookmarked)
-        }.getOrElse { exception ->
+    override suspend fun updateBookmarkStatus(isbn: String, isBookmarked: Boolean): Unit = runCatching {
+        local.updateBookmarkStatus(isbn, isBookmarked)
+    }.getOrElse { exception ->
+        throw DataExceptionMapper.toDataException(exception)
+    }
+
+    override suspend fun getAllBooks(): Flow<PagingData<BookDataModel>> = Pager(
+        config = pagingConfig,
+        pagingSourceFactory = { local.selectAllBooks() },
+    ).flow
+        .map { pagingData ->
+            pagingData.map { it.toDataModel() }
+        }
+        .catch { exception ->
             throw DataExceptionMapper.toDataException(exception)
         }
 
-    override suspend fun getAllBooks(): Flow<PagingData<BookDataModel>> =
-        Pager(
-            config = pagingConfig,
-            pagingSourceFactory = { local.selectAllBooks() },
-        ).flow
-            .map { pagingData ->
-                pagingData.map { it.toDataModel() }
-            }
-            .catch { exception ->
-                throw DataExceptionMapper.toDataException(exception)
-            }
-
-    override suspend fun getAllBookmarkedBooks(): Flow<PagingData<BookDataModel>> =
-        Pager(
-            config = pagingConfig,
-            pagingSourceFactory = { local.selectBooksByBookmarked(isBookmarked = true) },
-        ).flow
-            .map { pagingData ->
-                pagingData.map { it.toDataModel() }
-            }
-            .catch { exception ->
-                throw DataExceptionMapper.toDataException(exception)
-            }
-
-    override suspend fun getBookByIsbn(isbn: String): BookDataModel =
-        runCatching {
-            local.selectBookByIsbn(isbn).toDataModel()
-        }.getOrElse { exception ->
+    override suspend fun getAllBookmarkedBooks(): Flow<PagingData<BookDataModel>> = Pager(
+        config = pagingConfig,
+        pagingSourceFactory = { local.selectBooksByBookmarked(isBookmarked = true) },
+    ).flow
+        .map { pagingData ->
+            pagingData.map { it.toDataModel() }
+        }
+        .catch { exception ->
             throw DataExceptionMapper.toDataException(exception)
         }
+
+    override suspend fun getBookByIsbn(isbn: String): BookDataModel = runCatching {
+        local.selectBookByIsbn(isbn).toDataModel()
+    }.getOrElse { exception ->
+        throw DataExceptionMapper.toDataException(exception)
+    }
 
     override suspend fun isBookExistsByIsbn(isbn: String): Boolean = runCatching {
         local.isBookExistsByIsbn(isbn)
