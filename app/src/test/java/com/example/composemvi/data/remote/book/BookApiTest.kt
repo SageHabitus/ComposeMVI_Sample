@@ -1,10 +1,12 @@
 package com.example.composemvi.data.remote.book
 
+import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_REMOTE_TEST_JSON
+import com.example.composemvi.data.book.dummy.TestResourceLoader.getJsonStringFromResource
 import com.example.composemvi.data.source.remote.api.BookApi
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.INTERNAL_SERVER_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TIMEOUT_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TOO_MANY_REQUESTS_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.UNAUTHORIZED_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.INTERNAL_SERVER_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TIMEOUT_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TOO_MANY_REQUESTS_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.UNAUTHORIZED_MESSAGE
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMapper
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import kotlinx.coroutines.runBlocking
@@ -38,7 +40,7 @@ class BookApiTest {
     fun setup() {
         mockWebServer = MockWebServer()
 
-        dummyBooks = loadJsonFromResource("dummy_books_remote.json")
+        dummyBooks = getJsonStringFromResource(BOOK_REMOTE_TEST_JSON)
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
 

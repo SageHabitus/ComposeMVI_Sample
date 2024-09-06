@@ -4,11 +4,12 @@ import androidx.paging.PagingSource
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SmallTest
+import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_LOCAL_TEST_JSON
+import com.example.composemvi.data.book.dummy.TestResourceLoader.getListFromResource
 import com.example.composemvi.data.source.local.dao.BookDao
 import com.example.composemvi.data.source.local.db.LocalDatabase
 import com.example.composemvi.data.source.local.entity.BookEntity
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.Json
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -35,16 +36,8 @@ class BookDaoTest {
         ).allowMainThreadQueries().build()
 
         dao = database.bookDao()
-
-        dummyBooks = loadBookEntitiesFromJson("dummy_books_local.json")
-    }
-
-    private fun loadBookEntitiesFromJson(fileName: String): List<BookEntity> {
-        val jsonString = javaClass.classLoader?.getResourceAsStream(fileName)?.bufferedReader()?.use { it.readText() }
-            ?: throw IllegalArgumentException("Could not read file: $fileName")
-
-        val json = Json { ignoreUnknownKeys = true }
-        return json.decodeFromString(jsonString)
+        javaClass
+        dummyBooks = getListFromResource<BookEntity>(BOOK_LOCAL_TEST_JSON)
     }
 
     @After

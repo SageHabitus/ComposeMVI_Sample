@@ -2,10 +2,11 @@ package com.example.composemvi.data.source.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
-@Entity(tableName = "book")
+@Entity(tableName = "book", indices = [Index(value = ["isbn"], unique = true)])
 @Serializable
 data class BookEntity(
 

@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.composemvi.data.source.local.entity.BookEntity
 
 @Dao
@@ -35,4 +36,58 @@ interface BookDao {
 
     @Query("DELETE FROM book")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM book WHERE is_bookmarked = :isBookmarked")
+    suspend fun deleteBooksByBookmarkStatus(isBookmarked: Boolean)
+
+    @Transaction
+    suspend fun refreshAndInsertBooks(bookEntities: List<BookEntity>, isRefreshNeeded: Boolean) {
+        if (isRefreshNeeded) {
+            deleteBooksByBookmarkStatus(isBookmarked = false)
+        }
+
+        insertOrUpdateBooks(bookEntities)
+    }
+
+    @Query(
+        """
+    INSERT OR REPLACE INTO book (isbn, title, authors, contents, publisher, price, sale_price, thumbnail, url, 
+    is_bookmarked)
+    VALUES (:isbn, :title, :authors, :contents, :publisher, :price, :salePrice, :thumbnail, :url, 
+        CASE 
+            WHEN (SELECT is_bookmarked FROM book WHERE isbn = :isbn) = 1 THEN 1 
+            ELSE :isBookmarked 
+        END
+    )
+""",
+    )
+    suspend fun insertOrUpdateBook(
+        isbn: String,
+        title: String,
+        authors: List<String>,
+        contents: String,
+        publisher: String,
+        price: Int,
+        salePrice: Int,
+        thumbnail: String,
+        url: String,
+        isBookmarked: Boolean,
+    )
+
+    private suspend fun insertOrUpdateBooks(bookEntities: List<BookEntity>) {
+        bookEntities.forEach { book ->
+            insertOrUpdateBook(
+                isbn = book.isbn,
+                title = book.title,
+                authors = book.authors,
+                contents = book.contents,
+                publisher = book.publisher,
+                price = book.price,
+                salePrice = book.salePrice,
+                thumbnail = book.thumbnail,
+                url = book.url,
+                isBookmarked = book.isBookmarked,
+            )
+        }
+    }
 }

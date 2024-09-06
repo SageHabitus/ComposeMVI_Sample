@@ -22,4 +22,8 @@ interface BookLocalDataSource {
     suspend fun deleteBookByIsbn(isbn: String)
 
     suspend fun deleteAllBooks()
+
+    suspend fun deleteBooksByBookmarkStatus(isBookmarked: Boolean)
+
+    suspend fun refreshAndInsertBooks(bookEntities: List<BookEntity>, isRefresh: Boolean)
 }

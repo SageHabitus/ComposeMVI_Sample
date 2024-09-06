@@ -1,11 +1,11 @@
 package com.example.composemvi.data.remote.book
 
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.FORBIDDEN_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.INTERNAL_SERVER_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.NETWORK_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.NOT_FOUND_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TIMEOUT_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.UNAUTHORIZED_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.FORBIDDEN_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.INTERNAL_SERVER_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.NETWORK_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.NOT_FOUND_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TIMEOUT_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.UNAUTHORIZED_MESSAGE
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMapper
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import okhttp3.ResponseBody.Companion.toResponseBody
