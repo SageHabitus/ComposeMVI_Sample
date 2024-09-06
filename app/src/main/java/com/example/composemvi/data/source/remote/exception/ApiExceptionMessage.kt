@@ -1,6 +1,6 @@
 package com.example.composemvi.data.source.remote.exception
 
-object ApiErrorMessage {
+object ApiExceptionMessage {
 
     const val BAD_REQUEST_MESSAGE = "Bad request (400)"
     const val UNAUTHORIZED_MESSAGE = "Unauthorized access (401)"

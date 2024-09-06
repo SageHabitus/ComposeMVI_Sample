@@ -1,5 +1,7 @@
 package com.example.composemvi.data.remote.book
 
+import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_REMOTE_TEST_JSON
+import com.example.composemvi.data.book.dummy.TestResourceLoader.getJsonStringFromResource
 import com.example.composemvi.data.source.remote.api.BookApi
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import com.example.composemvi.data.source.remote.model.BookResponseModel
@@ -11,14 +13,11 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import okio.buffer
-import okio.source
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import java.nio.charset.StandardCharsets
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -33,7 +32,7 @@ class BookRemoteDataSourceImplTest {
     fun setup() {
         mockWebServer = MockWebServer()
 
-        dummyBooks = loadJsonFromResource("dummy_books_remote.json")
+        dummyBooks = getJsonStringFromResource(BOOK_REMOTE_TEST_JSON)
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
 
@@ -56,12 +55,6 @@ class BookRemoteDataSourceImplTest {
         mockWebServer.shutdown()
     }
 
-    private fun loadJsonFromResource(fileName: String): String {
-        val inputStream = javaClass.classLoader?.getResourceAsStream(fileName)
-        val source = inputStream?.source()?.buffer()
-        return source?.readString(StandardCharsets.UTF_8) ?: ""
-    }
-
     @Test
     fun `책 검색 API 정상 호출 시 결과를 반환해야 한다`() = runBlocking {
         val mockResponse = MockResponse()
@@ -78,8 +71,8 @@ class BookRemoteDataSourceImplTest {
         val secondBookTitle = parsedData.documents[1].title
 
         assertEquals(80, result.documents.size)
-        assertEquals(firstBookTitle, result.documents[0].title) // 첫 번째 책 제목 검사
-        assertEquals(secondBookTitle, result.documents[1].title) // 두 번째 책 제목 검사
+        assertEquals(firstBookTitle, result.documents[0].title)
+        assertEquals(secondBookTitle, result.documents[1].title)
     }
 
     @Test

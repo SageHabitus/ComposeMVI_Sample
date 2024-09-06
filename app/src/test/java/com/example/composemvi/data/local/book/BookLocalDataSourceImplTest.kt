@@ -2,13 +2,14 @@ package com.example.composemvi.data.local.book
 
 import android.database.sqlite.SQLiteException
 import androidx.paging.PagingSource
+import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_LOCAL_TEST_JSON
+import com.example.composemvi.data.book.dummy.TestResourceLoader.getListFromResource
 import com.example.composemvi.data.source.local.dao.BookDao
 import com.example.composemvi.data.source.local.entity.BookEntity
-import com.example.composemvi.data.source.local.exception.LocalDatabaseException
+import com.example.composemvi.data.source.local.exception.RoomDatabaseException
 import com.example.composemvi.data.source.local.source.BookLocalDataSource
 import com.example.composemvi.data.source.local.source.BookLocalDataSourceImpl
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -28,16 +29,7 @@ class BookLocalDataSourceImplTest {
         dao = mock(BookDao::class.java)
         dataSource = BookLocalDataSourceImpl(dao)
 
-        dummyBooks = loadBookEntitiesFromJson("dummy_books_local.json")
-    }
-
-    private fun loadBookEntitiesFromJson(fileName: String): List<BookEntity> {
-        val jsonString = javaClass.classLoader?.getResourceAsStream(fileName)
-            ?.bufferedReader()
-            .use { it?.readText() } ?: ""
-
-        val json = Json { ignoreUnknownKeys = true }
-        return json.decodeFromString(jsonString)
+        dummyBooks = getListFromResource<BookEntity>(BOOK_LOCAL_TEST_JSON)
     }
 
     @Test
@@ -64,7 +56,7 @@ class BookLocalDataSourceImplTest {
         assertEquals(result, mockPagingSource)
     }
 
-    @Test(expected = LocalDatabaseException::class)
+    @Test(expected = RoomDatabaseException::class)
     fun `즐겨찾기 상태 선택 중 예외가 발생하면 처리된다`(): Unit = runBlocking {
         whenever(dao.selectByBookmarked(true)).thenThrow(SQLiteException("Test exception"))
 
@@ -81,7 +73,7 @@ class BookLocalDataSourceImplTest {
         assertEquals(book, result)
     }
 
-    @Test(expected = LocalDatabaseException::class)
+    @Test(expected = RoomDatabaseException::class)
     fun `책을 ISBN으로 선택할 때 예외가 발생하면 처리된다`() = runBlocking {
         whenever(dao.selectByIsbn("123")).thenThrow(SQLiteException("Test exception"))
 
@@ -98,7 +90,7 @@ class BookLocalDataSourceImplTest {
         verify(dao).insert(book)
     }
 
-    @Test(expected = LocalDatabaseException::class)
+    @Test(expected = RoomDatabaseException::class)
     fun `책을 삽입할 때 예외가 발생하면 처리된다`() = runBlocking {
         val book = dummyBooks.random()
         whenever(dao.insert(book)).thenThrow(SQLiteException("Test exception"))
@@ -113,7 +105,7 @@ class BookLocalDataSourceImplTest {
         verify(dao).updateBookmarkStatus("123", true)
     }
 
-    @Test(expected = LocalDatabaseException::class)
+    @Test(expected = RoomDatabaseException::class)
     fun `책의 즐겨찾기 상태를 업데이트할 때 예외가 발생하면 처리된다`() = runBlocking {
         whenever(dao.updateBookmarkStatus("123", true)).thenThrow(SQLiteException("Test exception"))
 
@@ -127,7 +119,7 @@ class BookLocalDataSourceImplTest {
         verify(dao).deleteByIsbn("123")
     }
 
-    @Test(expected = LocalDatabaseException::class)
+    @Test(expected = RoomDatabaseException::class)
     fun `책을 삭제할 때 예외가 발생하면 처리된다`() = runBlocking {
         whenever(dao.deleteByIsbn("123")).thenThrow(SQLiteException("Test exception"))
 

@@ -49,6 +49,9 @@ android {
             useSupportLibrary = true
         }
 
+        testOptions {
+            unitTests.isReturnDefaultValues = true
+        }
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
         }
@@ -89,6 +92,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-opt-in=androidx.paging.ExperimentalPagingApi",
+        )
     }
     buildFeatures {
         compose = true

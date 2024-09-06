@@ -1,9 +1,9 @@
 package com.example.composemvi.data.source.remote.exception
 
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.JSON_PARSE_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.NETWORK_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.TIMEOUT_ERROR_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiErrorMessage.UNKNOWN_API_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.JSON_PARSE_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.NETWORK_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TIMEOUT_ERROR_MESSAGE
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.UNKNOWN_API_ERROR_MESSAGE
 
 object ApiExceptionMapper {
 
@@ -36,7 +36,7 @@ object ApiExceptionMapper {
         val errorBody = exception.response()?.errorBody()?.string().orEmpty()
         val code = exception.code()
 
-        val errorMessage = errorBody.ifEmpty { ApiErrorMessage.getDefaultErrorMessageForCode(code) }
+        val errorMessage = errorBody.ifEmpty { ApiExceptionMessage.getDefaultErrorMessageForCode(code) }
 
         return when (code) {
             400 -> RemoteApiException.ClientException(errorMessage)
