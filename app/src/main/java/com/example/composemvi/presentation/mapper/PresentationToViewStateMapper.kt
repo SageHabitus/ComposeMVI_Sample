@@ -38,12 +38,15 @@ fun BookPresentationModel.toBookmarkViewState(): BookmarkedBookItemViewState {
 
 fun BookDomainModel.toDetailBookViewState(): BookDetailItemViewState {
     return BookDetailItemViewState(
+        isbn = isbn,
         title = title,
         authors = authors,
-        publisher = publisher,
-        thumbnail = thumbnail,
-        price = price,
         contents = contents,
+        publisher = publisher,
+        price = price,
+        salePrice = salePrice,
+        thumbnail = thumbnail,
+        url = url,
         isBookmarked = isBookmarked,
     )
 }
