@@ -111,7 +111,7 @@ class BookSearchViewModel @Inject constructor(
             _event.trySend(event).getOrThrow()
         }
 
-    private fun loadInitialBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooks("")
+    private suspend fun loadInitialBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooks("")
 
     private fun updateQuery(query: String): Flow<BookSearchPartialStateChange> =
         BookSearchPartialStateChange.UpdateQuery.Success(query = query)
@@ -123,7 +123,8 @@ class BookSearchViewModel @Inject constructor(
                 )
             }
 
-    private fun searchBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooksUseCase.execute(query)
+    private suspend fun searchBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooksUseCase
+        .execute(query)
         .cachedIn(viewModelScope)
         .map { pagingData ->
             pagingData.map { it.toPresentationModel().toBookItemViewState() }
