@@ -55,11 +55,11 @@ sealed interface BookSearchPartialStateChange {
             return when (this) {
                 is Success -> oldState.copy(
                     query = query,
-                    searchResultState = BookSearchViewState.Empty,
+                    searchResultState = oldState.searchResultState,
                 )
 
                 is Failed -> oldState.copy(
-                    searchResultState = BookSearchViewState.Failed(errorMessage),
+                    searchResultState = BookSearchViewState.Failed(""),
                 )
             }
         }
