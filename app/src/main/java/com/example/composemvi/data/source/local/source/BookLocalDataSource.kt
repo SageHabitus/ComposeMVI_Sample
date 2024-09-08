@@ -11,6 +11,8 @@ interface BookLocalDataSource {
 
     suspend fun selectBookByIsbn(isbn: String): BookEntity
 
+    fun selectBookByQuery(query: String): PagingSource<Int, BookEntity>
+
     suspend fun insertBook(entity: BookEntity)
 
     suspend fun updateBookmarkStatus(isbn: String, isBookmarked: Boolean)

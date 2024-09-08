@@ -17,7 +17,7 @@ import java.net.UnknownHostException
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class ApiExceptionMapperTest {
+class ApiExceptionToDataMapperTest {
 
     @Test
     fun `네트워크 예러 발생 시 NetworkException을 반환해야 한다`() {

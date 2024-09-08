@@ -31,7 +31,6 @@ class BookRemoteMediator(
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> currentPage + 1
             }
-
             return runCatching {
                 val bookResponseModel = remote.searchBooks(query, page, state.config.pageSize)
                 val bookEntities = bookResponseModel.documents.map { it.toEntityModel() }

@@ -21,7 +21,7 @@ import java.io.IOException
 import java.util.concurrent.TimeoutException
 
 @RunWith(JUnit4::class)
-class RoomExceptionMapperTest {
+class RoomExceptionToDataMapperTest {
 
     @Test
     fun `SQLiteConstraintException is mapped to ConstraintException`() {

@@ -27,13 +27,12 @@ class BookRepositoryImpl @Inject constructor(
 
     override suspend fun searchAndCacheBooks(query: String): Flow<PagingData<BookDataModel>> {
         this.query.value = query
-
         return this.query
             .flatMapLatest { currentQuery ->
                 Pager(
                     config = pagingConfig,
                     remoteMediator = BookRemoteMediator(currentQuery, remote, local),
-                    pagingSourceFactory = { local.selectAllBooks() },
+                    pagingSourceFactory = { local.selectBookByQuery(currentQuery) },
                 ).flow
                     .map { pagingData ->
                         pagingData.map { it.toDataModel() }

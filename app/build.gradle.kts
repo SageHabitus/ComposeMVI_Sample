@@ -63,12 +63,11 @@ android {
             val kakaoApiKey = properties.getProperty("KAKAO_API_KEY", "")
             ext["KAKAO_API_KEY"] = kakaoApiKey
 
-            val escapedKakaoApiKey = "\"${kakaoApiKey.replace("\"", "\\\"")}\""
-            buildConfigField("String", "KAKAO_API_KEY", escapedKakaoApiKey)
+            buildConfigField("String", "KAKAO_API_KEY", kakaoApiKey)
         } else {
             val kakaoApiKey = System.getenv("KAKAO_API_KEY")
             if (!kakaoApiKey.isNullOrBlank()) {
-                buildConfigField("String", "KAKAO_API_KEY", "\"$kakaoApiKey\"")
+                buildConfigField("String", "KAKAO_API_KEY", kakaoApiKey)
             }
         }
     }
@@ -96,6 +95,7 @@ android {
             "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
             "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             "-opt-in=androidx.paging.ExperimentalPagingApi",
+            "-opt-in=kotlinx.coroutines.FlowPreview",
         )
     }
     buildFeatures {

@@ -10,7 +10,7 @@ import junit.framework.TestCase.assertTrue
 import org.junit.Test
 import java.net.SocketTimeoutException
 
-class DataExceptionMapperTest {
+class DomainExceptionToDataMapperTest {
 
     @Test
     fun `RoomDatabaseException을 LocalDataSourceException으로 매핑해야 한다`() {

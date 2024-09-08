@@ -17,6 +17,6 @@ class Converter {
 
     @TypeConverter
     fun toStringList(value: String): List<String> {
-        return json.decodeFromString(value)
+        return if (value.isEmpty()) emptyList() else json.decodeFromString(value)
     }
 }

@@ -28,6 +28,12 @@ class BookLocalDataSourceImpl @Inject constructor(
         throw RoomExceptionMapper.toException(exception)
     }
 
+    override fun selectBookByQuery(query: String): PagingSource<Int, BookEntity> = runCatching {
+        dao.selectBooksByQuery(query)
+    }.getOrElse { exception ->
+        throw RoomExceptionMapper.toException(exception)
+    }
+
     override suspend fun insertBook(entity: BookEntity) = runCatching {
         dao.insert(entity)
     }.getOrElse { exception ->
@@ -71,7 +77,7 @@ class BookLocalDataSourceImpl @Inject constructor(
     }
 
     override suspend fun refreshAndInsertBooks(bookEntities: List<BookEntity>, isRefresh: Boolean) = runCatching {
-        dao.refreshAndInsertBooks(bookEntities = bookEntities, isRefreshNeeded = isRefresh)
+        dao.refreshAndInsertBooks(bookEntitiesFromRemote = bookEntities, isRefreshNeeded = isRefresh)
     }.getOrElse { exception ->
         throw RoomExceptionMapper.toException(exception)
     }
