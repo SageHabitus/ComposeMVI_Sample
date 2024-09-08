@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface BookRepository {
 
-    suspend fun searchAndCacheBooks(query: String): Flow<PagingData<BookDataModel>>
+    fun searchAndCacheBooks(query: String): Flow<PagingData<BookDataModel>>
 
     suspend fun updateBookmarkStatus(isbn: String, isBookmarked: Boolean)
 

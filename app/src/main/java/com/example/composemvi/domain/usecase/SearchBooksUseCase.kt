@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SearchBooksUseCase @Inject constructor(
     private val bookRepo: BookRepository,
 ) {
-    suspend fun execute(query: String): Flow<PagingData<BookDomainModel>> {
+    fun execute(query: String): Flow<PagingData<BookDomainModel>> {
         return bookRepo.searchAndCacheBooks(query)
             .map { pagingData ->
                 pagingData.map { it.toDomainModel() }
