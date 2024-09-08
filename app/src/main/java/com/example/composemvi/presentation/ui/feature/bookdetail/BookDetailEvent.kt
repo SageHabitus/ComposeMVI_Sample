@@ -2,7 +2,7 @@ package com.example.composemvi.presentation.ui.feature.bookdetail
 
 sealed interface BookDetailEvent {
     sealed interface FetchResultEvent : BookDetailEvent {
-        data object ShowEmptyResultToast : BookDetailEvent
+        data class ShowEmptyResultToast(val message: String?) : BookDetailEvent
         data object ShowSuccessToast : BookDetailEvent
     }
 

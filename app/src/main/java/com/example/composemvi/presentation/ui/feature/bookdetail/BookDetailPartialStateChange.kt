@@ -5,7 +5,15 @@ sealed interface BookDetailPartialStateChange {
 
     sealed interface FetchBook : BookDetailPartialStateChange {
         override fun reduce(oldState: BookDetailState): BookDetailState {
-            return oldState
+            return when (this) {
+                is Success -> oldState.copy(
+                    viewState = BookDetailViewState.Success(book),
+                )
+
+                is Failed -> oldState.copy(
+                    viewState = BookDetailViewState.Failed(errorMessage),
+                )
+            }
         }
 
         data class Success(val book: BookDetailItemViewState) : FetchBook
@@ -16,7 +24,7 @@ sealed interface BookDetailPartialStateChange {
         override fun reduce(oldState: BookDetailState): BookDetailState {
             return when (this) {
                 is Success -> oldState.copy(
-                    viewState = oldState.viewState,
+                    viewState = BookDetailViewState.Success(book),
                 )
 
                 is Failed -> oldState.copy(
@@ -25,7 +33,7 @@ sealed interface BookDetailPartialStateChange {
             }
         }
 
-        data object Success : BookmarkToggle
+        data class Success(val book: BookDetailItemViewState) : BookmarkToggle
         data class Failed(val errorMessage: String? = null) : BookmarkToggle
     }
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.composemvi.core.extension.asFlow
 import com.example.composemvi.core.extension.catchMap
+import com.example.composemvi.core.extension.throttleFirst
 import com.example.composemvi.domain.usecase.GetBookUseCase
 import com.example.composemvi.domain.usecase.ToggleBookmarkUseCase
 import com.example.composemvi.presentation.mapper.toDetailBookViewState
@@ -56,7 +57,7 @@ class BookDetailViewModel @Inject constructor(
 
     private fun dispatchIntentFlow(): Flow<BookDetailIntent> = merge(
         intent.filterIsInstance<BookDetailIntent.ShowBookDetails>(),
-        intent.filterIsInstance<BookDetailIntent.ToggleBookmark>(),
+        intent.filterIsInstance<BookDetailIntent.ToggleBookmark>().throttleFirst(300),
     )
 
     private fun Flow<BookDetailIntent>.toPartialStateChangeFlow(): Flow<BookDetailPartialStateChange> = merge(
@@ -78,14 +79,12 @@ class BookDetailViewModel @Inject constructor(
                 }
 
                 is BookDetailPartialStateChange.FetchBook.Failed -> {
-                    BookDetailEvent.FetchResultEvent.ShowEmptyResultToast
+                    BookDetailEvent.FetchResultEvent.ShowEmptyResultToast(change.errorMessage)
                 }
 
                 is BookDetailPartialStateChange.FetchBook.Success -> {
                     BookDetailEvent.FetchResultEvent.ShowSuccessToast
                 }
-
-                else -> return@onEach
             }
             _event.trySend(event).getOrThrow()
         }
@@ -110,7 +109,10 @@ class BookDetailViewModel @Inject constructor(
         toggleBookmarkUseCase
             .execute(book.isbn, book.isBookmarked)
             .asFlow()
-            .map<Unit, BookDetailPartialStateChange> { BookDetailPartialStateChange.BookmarkToggle.Success }
+            .map<Unit, BookDetailPartialStateChange> {
+                val updatedBook = book.copy(isBookmarked = !book.isBookmarked)
+                BookDetailPartialStateChange.BookmarkToggle.Success(updatedBook)
+            }
             .catchMap { throwable ->
                 BookDetailPartialStateChange.BookmarkToggle.Failed(throwable.message)
             }

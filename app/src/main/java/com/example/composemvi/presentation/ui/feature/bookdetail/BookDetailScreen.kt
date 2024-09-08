@@ -35,6 +35,7 @@ fun BookDetailScreen(
         viewModel.onIntent(BookDetailIntent.ShowBookDetails(isbn))
     }
 
+    println("디버깅 컴포즈: ${state.viewState}")
     when (state.viewState) {
         is BookDetailViewState.Loading -> {
             LoadingIndicator()
@@ -73,7 +74,7 @@ fun BookDetailEventListener(event: Flow<BookDetailEvent>, snackbarState: Snackba
                 }
 
                 is BookDetailEvent.FetchResultEvent.ShowEmptyResultToast -> {
-                    snackbarState.showSnackbar(context.getString(R.string.search_empty))
+                    snackbarState.showSnackbar(event.message)
                 }
 
                 is BookDetailEvent.FetchResultEvent.ShowSuccessToast -> {
