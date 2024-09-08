@@ -25,7 +25,7 @@ class BookRepositoryImpl @Inject constructor(
 
     private val query = MutableStateFlow("")
 
-    override suspend fun searchAndCacheBooks(query: String): Flow<PagingData<BookDataModel>> {
+    override fun searchAndCacheBooks(query: String): Flow<PagingData<BookDataModel>> {
         this.query.value = query
         return this.query
             .flatMapLatest { currentQuery ->

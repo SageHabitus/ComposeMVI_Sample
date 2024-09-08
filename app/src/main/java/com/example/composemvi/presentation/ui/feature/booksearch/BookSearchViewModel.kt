@@ -61,10 +61,6 @@ class BookSearchViewModel @Inject constructor(
     @MainThread
     fun onIntent(intent: BookSearchIntent) = this.intent.tryEmit(intent)
 
-    suspend fun testSearch(query: String) {
-        searchBooks(query)
-    }
-
     private fun dispatchIntentFlow(): Flow<BookSearchIntent> = merge(
         intent.filterIsInstance<BookSearchIntent.LoadInitialBooks>().debounce(200),
         intent.filterIsInstance<BookSearchIntent.SearchBooks>().debounce(200),
@@ -127,19 +123,19 @@ class BookSearchViewModel @Inject constructor(
                 )
             }
 
-    private fun searchBooks(query: String): Flow<BookSearchPartialStateChange> =
-        searchBooksUseCase.execute(query).cachedIn(viewModelScope)
-            .map { pagingData ->
-                pagingData.map { it.toPresentationModel().toBookItemViewState() }
-            }
-            .asFlow()
-            .map { pagingData -> BookSearchPartialStateChange.SearchResult.Success(books = pagingData) }
-            .startWith(BookSearchPartialStateChange.SearchResult.Loading)
-            .catchMap { throwable ->
-                BookSearchPartialStateChange.SearchResult.Failed(
-                    throwable.message,
-                )
-            }
+    private fun searchBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooksUseCase.execute(query)
+        .cachedIn(viewModelScope)
+        .map { pagingData ->
+            pagingData.map { it.toPresentationModel().toBookItemViewState() }
+        }
+        .asFlow()
+        .map { pagingData -> BookSearchPartialStateChange.SearchResult.Success(books = pagingData) }
+        .startWith(BookSearchPartialStateChange.SearchResult.Loading)
+        .catchMap { throwable ->
+            BookSearchPartialStateChange.SearchResult.Failed(
+                throwable.message,
+            )
+        }
 
     private suspend fun toggleBookmark(book: BookItemViewState): Flow<BookSearchPartialStateChange> =
         toggleBookmarkUseCase
