@@ -15,6 +15,7 @@ object PagingModule {
     @Singleton
     fun providePagingConfig(): PagingConfig = PagingConfig(
         pageSize = 10,
+        initialLoadSize = 30,
         enablePlaceholders = false,
     )
 }
