@@ -1,7 +1,10 @@
 ### 📚 책 검색 애플리케이션 ( Jetpack Compose with Advanced MVI Concepts )
 
 
-이 프로젝트는 **Jetpack Compose**와 **MVI (Model-View-Intent)** 패턴을 결합하여 구현된 고성능 책 검색 애플리케이션입니다. **Paging 3**와 **Room**, **Retrofit** 등의 최신 안드로이드 기술 스택을 활용하여 대규모 데이터 처리와 오프라인 저장소를 효율적으로 관리합니다. 본 애플리케이션은 효율적이고 일관된 사용자 경험을 제공하기 위해 설계되었습니다.
+본 애플리케이션은 보일러 플레이트 코드가 많지만 의도한 것임을 알려드립니다. **Paging 3**와 **Room**, **Retrofit** 등의 최신 안드로이드 기술 스택을 활용하여 대규모 데이터 처리와 오프라인 저장소를 효율적으로 관리합니다. 본 애플리케이션은 효율적이고 일관된 사용자 경험을 제공하기 위해 설계되었고 최대한 구글아키텍쳐를 적용하기 위해 노력했습니다.
+
+## 생략·병합 가능한 부분
+**DataSource, UseCase 생략가능, DomainModel, PresentationModel 생략 가능, UiState 병합 가능**
 
 ## 주요 기능 ✨
 
