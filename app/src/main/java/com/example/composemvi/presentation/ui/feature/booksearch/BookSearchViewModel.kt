@@ -139,9 +139,9 @@ class BookSearchViewModel @Inject constructor(
             )
         }
 
-    private suspend fun toggleBookmark(bookItem: BookItemViewState): Flow<BookSearchPartialStateChange> =
+    private suspend fun toggleBookmark(book: BookItemViewState): Flow<BookSearchPartialStateChange> =
         toggleBookmarkUseCase
-            .execute(bookItem.isbn, bookItem.isBookmarked)
+            .execute(book.isbn, book.isBookmarked)
             .asFlow()
             .map<Unit, BookSearchPartialStateChange> { BookSearchPartialStateChange.BookmarkResult.Success }
             .catchMap { throwable ->
@@ -150,8 +150,8 @@ class BookSearchViewModel @Inject constructor(
                 )
             }
 
-    private fun navigateToDetail(bookItem: BookItemViewState): Flow<BookSearchPartialStateChange> =
-        BookSearchPartialStateChange.NavigateToDetail.Success(book = bookItem)
+    private fun navigateToDetail(book: BookItemViewState): Flow<BookSearchPartialStateChange> =
+        BookSearchPartialStateChange.NavigateToDetail.Success(book = book)
             .asFlow()
             .map { it as BookSearchPartialStateChange }
             .catchMap { throwable ->
