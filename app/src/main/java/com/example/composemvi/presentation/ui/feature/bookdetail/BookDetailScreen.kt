@@ -74,7 +74,7 @@ fun BookDetailEventListener(event: Flow<BookDetailEvent>, snackbarState: Snackba
                 }
 
                 is BookDetailEvent.FetchResultEvent.ShowEmptyResultToast -> {
-                    snackbarState.showSnackbar(event.message)
+                    snackbarState.showSnackbar(event.message ?: "")
                 }
 
                 is BookDetailEvent.FetchResultEvent.ShowSuccessToast -> {
