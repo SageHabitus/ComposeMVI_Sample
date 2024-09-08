@@ -107,7 +107,10 @@ fun BookSearchList(
     val books = bookItemUiState.collectAsLazyPagingItems()
 
     LazyColumn {
-        items(books.itemCount) { index ->
+        items(
+            count = books.itemCount,
+            key = { index -> books[index]?.isbn ?: index },
+        ) { index ->
             books[index]?.let { book ->
                 BookSearchListItem(
                     book = book,
