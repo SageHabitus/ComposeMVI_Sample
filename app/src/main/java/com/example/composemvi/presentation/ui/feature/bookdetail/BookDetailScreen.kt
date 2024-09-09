@@ -35,7 +35,6 @@ fun BookDetailScreen(
         viewModel.onIntent(BookDetailIntent.ShowBookDetails(isbn))
     }
 
-    println("디버깅 컴포즈: ${state.viewState}")
     when (state.viewState) {
         is BookDetailViewState.Loading -> {
             LoadingIndicator()
