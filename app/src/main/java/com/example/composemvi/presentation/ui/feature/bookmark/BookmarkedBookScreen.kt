@@ -168,8 +168,7 @@ fun BookmarkedBookEventListener(
                     navController.navigate(route)
                 }
 
-                is BookmarkEvent.BookmarkActionEvent.ShowBookmarkFailedSnackbar -> TODO()
-                is BookmarkEvent.NavigationEvent.ShowNavigationFailedDialog -> TODO()
+                is BookmarkEvent.BookmarkActionEvent.ShowBookmarkFailedSnackbar -> return@collect
             }
         }
     }

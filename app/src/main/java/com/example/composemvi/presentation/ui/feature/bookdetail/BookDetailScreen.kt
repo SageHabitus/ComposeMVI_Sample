@@ -72,9 +72,7 @@ fun BookDetailEventListener(event: Flow<BookDetailEvent>, snackbarState: Snackba
                     snackbarState.showSnackbar(context.getString(R.string.bookmark_failed))
                 }
 
-                is BookDetailEvent.FetchResultEvent.ShowEmptyResultToast -> {
-                    return@collect
-                }
+                is BookDetailEvent.FetchResultEvent.ShowEmptyResultToast -> return@collect
 
                 is BookDetailEvent.FetchResultEvent.ShowSuccessToast -> {
                     snackbarState.showSnackbar(context.getString(R.string.bookmark_success))
