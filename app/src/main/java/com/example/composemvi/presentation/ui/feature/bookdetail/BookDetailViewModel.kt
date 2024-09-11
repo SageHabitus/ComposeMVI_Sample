@@ -88,8 +88,7 @@ class BookDetailViewModel @Inject constructor(
                     BookDetailEvent.FetchResultEvent.ShowSuccessToast
                 }
 
-                BookDetailPartialStateChange.BookmarkToggle.Loading -> TODO()
-                BookDetailPartialStateChange.FetchBook.Loading -> TODO()
+                BookDetailPartialStateChange.LoadingDialog.Show -> return@onEach
             }
             _event.trySend(event).getOrThrow()
         }
@@ -104,7 +103,7 @@ class BookDetailViewModel @Inject constructor(
             .toDetailBookViewState()
             .asFlow()
             .map { BookDetailPartialStateChange.FetchBook.Success(it) }
-            .startWith(BookDetailPartialStateChange.FetchBook.Loading)
+            .startWith(BookDetailPartialStateChange.LoadingDialog.Show)
             .catchMap { throwable ->
                 BookDetailPartialStateChange.FetchBook.Failed(throwable.message)
             }
@@ -118,7 +117,7 @@ class BookDetailViewModel @Inject constructor(
                 val updatedBook = book.copy(isBookmarked = !book.isBookmarked)
                 BookDetailPartialStateChange.BookmarkToggle.Success(updatedBook)
             }
-            .startWith(BookDetailPartialStateChange.BookmarkToggle.Loading)
+            .startWith(BookDetailPartialStateChange.LoadingDialog.Show)
             .catchMap { throwable ->
                 BookDetailPartialStateChange.BookmarkToggle.Failed(throwable.message)
             }

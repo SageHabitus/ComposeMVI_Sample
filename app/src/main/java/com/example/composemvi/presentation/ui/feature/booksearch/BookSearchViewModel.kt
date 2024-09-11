@@ -136,8 +136,8 @@ class BookSearchViewModel @Inject constructor(
         toggleBookmarkUseCase
             .execute(book.isbn, book.isBookmarked)
             .asFlow()
-            .map<Unit, BookSearchPartialStateChange> { BookSearchPartialStateChange.BookmarkResult.Success }
-            .startWith(BookSearchPartialStateChange.BookmarkResult.Loading)
+            .map { BookSearchPartialStateChange.BookmarkResult.Success }
+            .startWith(BookSearchPartialStateChange.LoadingDialog.Show)
             .catchMap { throwable ->
                 BookSearchPartialStateChange.BookmarkResult.Failed(
                     throwable.message,
