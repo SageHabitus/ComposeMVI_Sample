@@ -111,7 +111,7 @@ class BookSearchViewModel @Inject constructor(
             _event.trySend(event).getOrThrow()
         }
 
-    private suspend fun loadInitialBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooks("")
+    private suspend fun loadInitialBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooks(query)
 
     private fun updateQuery(query: String): Flow<BookSearchPartialStateChange> =
         BookSearchPartialStateChange.UpdateQuery.Success(query = query)
