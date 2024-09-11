@@ -50,7 +50,7 @@ class BookSearchViewModelTest {
         viewModel.state.test {
             val state = awaitItem()
             assertEquals("Kotlin", state.query)
-            assert(state.searchResultState is BookSearchViewState.Empty)
+            assert(state.viewState is BookSearchViewState.Empty)
         }
     }
 
@@ -62,10 +62,10 @@ class BookSearchViewModelTest {
 
         viewModel.state.test {
             val loadingState = awaitItem()
-            assert(loadingState.searchResultState is BookSearchViewState.Loading)
+            assert(loadingState.viewState is BookSearchViewState.Loading)
 
             val successState = awaitItem()
-            assert(successState.searchResultState is BookSearchViewState.Success)
+            assert(successState.viewState is BookSearchViewState.Success)
         }
     }
 
@@ -89,10 +89,10 @@ class BookSearchViewModelTest {
 
         viewModel.state.test {
             val loadingState = awaitItem()
-            assert(loadingState.searchResultState is BookSearchViewState.Loading)
+            assert(loadingState.viewState is BookSearchViewState.Loading)
 
             val successState = awaitItem()
-            assert(successState.searchResultState is BookSearchViewState.Success)
+            assert(successState.viewState is BookSearchViewState.Success)
         }
     }
 

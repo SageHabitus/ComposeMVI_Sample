@@ -50,12 +50,12 @@ fun BookmarkedBookScreen(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        when (state.viewState) {
+        when (val viewState = state.viewState) {
             is BookmarkedBookViewState.Loading -> LoadingIndicator()
             is BookmarkedBookViewState.Failed -> Unit
             is BookmarkedBookViewState.Success -> {
                 BookmarkedBookList(
-                    bookItemUiState = (state.viewState as BookmarkedBookViewState.Success).books,
+                    bookItemUiState = viewState.books,
                     onBookmarkClick = { book -> viewModel.onIntent(BookmarkIntent.ToggleBookmark(book)) },
                     onNavigateToDetail = { book -> viewModel.onIntent(BookmarkIntent.NavigateToDetail(book)) },
                 )

@@ -64,12 +64,12 @@ fun BookSearchScreen(
             onSearchTriggered = { viewModel.onIntent(BookSearchIntent.SearchBooks(state.query)) },
         )
 
-        when (state.searchResultState) {
+        when (val viewState = state.viewState) {
             is BookSearchViewState.Loading -> LoadingIndicator()
             is BookSearchViewState.Failed -> Unit
             is BookSearchViewState.Success -> {
                 BookSearchList(
-                    bookItemUiState = (state.searchResultState as BookSearchViewState.Success).books,
+                    bookItemUiState = viewState.books,
                     onBookmarkClick = { book -> viewModel.onIntent(BookSearchIntent.ToggleBookmark(book)) },
                     onNavigateToDetail = { book -> viewModel.onIntent(BookSearchIntent.NavigateToDetail(book)) },
                 )

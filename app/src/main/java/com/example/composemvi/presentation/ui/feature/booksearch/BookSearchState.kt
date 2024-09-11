@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 data class BookSearchState(
     val query: String = "",
-    val searchResultState: BookSearchViewState = BookSearchViewState.Empty,
+    val viewState: BookSearchViewState = BookSearchViewState.Empty,
 )
 
 sealed interface BookSearchViewState {

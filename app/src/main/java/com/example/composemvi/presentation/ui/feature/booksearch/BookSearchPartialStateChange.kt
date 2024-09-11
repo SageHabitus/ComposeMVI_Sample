@@ -10,15 +10,15 @@ sealed interface BookSearchPartialStateChange {
         override fun reduce(oldState: BookSearchState): BookSearchState {
             return when (this) {
                 is Success -> oldState.copy(
-                    searchResultState = BookSearchViewState.Success(books),
+                    viewState = BookSearchViewState.Success(books),
                 )
 
                 is Failed -> oldState.copy(
-                    searchResultState = BookSearchViewState.Failed(errorMessage),
+                    viewState = BookSearchViewState.Failed(errorMessage),
                 )
 
                 is Loading -> oldState.copy(
-                    searchResultState = BookSearchViewState.Loading,
+                    viewState = BookSearchViewState.Loading,
                 )
             }
         }
@@ -32,15 +32,15 @@ sealed interface BookSearchPartialStateChange {
         override fun reduce(oldState: BookSearchState): BookSearchState {
             return when (this) {
                 is Success -> oldState.copy(
-                    searchResultState = oldState.searchResultState,
+                    viewState = oldState.viewState,
                 )
 
                 is Failed -> oldState.copy(
-                    searchResultState = BookSearchViewState.Failed(errorMessage),
+                    viewState = BookSearchViewState.Failed(errorMessage),
                 )
 
                 is Loading -> oldState.copy(
-                    searchResultState = BookSearchViewState.Loading,
+                    viewState = BookSearchViewState.Loading,
                 )
             }
         }
@@ -55,11 +55,11 @@ sealed interface BookSearchPartialStateChange {
             return when (this) {
                 is Success -> oldState.copy(
                     query = query,
-                    searchResultState = oldState.searchResultState,
+                    viewState = oldState.viewState,
                 )
 
                 is Failed -> oldState.copy(
-                    searchResultState = BookSearchViewState.Failed(""),
+                    viewState = BookSearchViewState.Failed(""),
                 )
             }
         }
@@ -72,11 +72,11 @@ sealed interface BookSearchPartialStateChange {
         override fun reduce(oldState: BookSearchState): BookSearchState {
             return when (this) {
                 is Success -> oldState.copy(
-                    searchResultState = oldState.searchResultState,
+                    viewState = oldState.viewState,
                 )
 
                 is Failed -> oldState.copy(
-                    searchResultState = BookSearchViewState.Failed(errorMessage),
+                    viewState = BookSearchViewState.Failed(errorMessage),
                 )
             }
         }
