@@ -13,6 +13,5 @@ sealed interface BookSearchEvent {
 
     sealed interface NavigationEvent : BookSearchEvent {
         data class NavigateToDetail(val book: BookItemViewState) : NavigationEvent
-        data class ShowNavigationFailedDialog(val message: String?) : NavigationEvent
     }
 }

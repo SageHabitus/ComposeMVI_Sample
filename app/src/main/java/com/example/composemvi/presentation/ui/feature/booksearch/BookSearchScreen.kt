@@ -1,6 +1,5 @@
 package com.example.composemvi.presentation.ui.feature.booksearch
 
-import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,9 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.layout.ContentScale
@@ -42,7 +38,6 @@ import androidx.navigation.NavHostController
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.rememberAsyncImagePainter
-import com.example.composemvi.presentation.ui.common.AlertDialog
 import com.example.composemvi.presentation.ui.common.BookImage
 import com.example.composemvi.presentation.ui.common.LoadingIndicator
 import com.example.composemvi.presentation.ui.common.showCustomToast
@@ -201,15 +196,9 @@ private fun SearchField(searchText: String, onSearchTextChanged: (String) -> Uni
 @Composable
 fun EventListener(event: Flow<BookSearchEvent>, snackbarState: SnackbarHostState, navController: NavHostController) {
     val context = LocalContext.current
-    var currentDialogEvent by remember { mutableStateOf<BookSearchEvent.NavigationEvent?>(null) }
-
     LaunchedEffect(Unit) {
         event.collect { event ->
             when (event) {
-                is BookSearchEvent.NavigationEvent.ShowNavigationFailedDialog -> {
-                    currentDialogEvent = event
-                }
-
                 is BookSearchEvent.NavigationEvent.NavigateToDetail -> {
                     val route = context.getString(R.string.navigate_to_book_detail, event.book.isbn)
                     navController.navigate(route)
@@ -230,41 +219,6 @@ fun EventListener(event: Flow<BookSearchEvent>, snackbarState: SnackbarHostState
                 is BookSearchEvent.SearchResultEvent.ShowSearchEndedToast -> {
                     showCustomToast(context, context.getString(R.string.search_ended))
                 }
-            }
-        }
-    }
-
-    ShowBookSearchAlertDialog(
-        currentDialogEvent,
-        context,
-        onConfirmClick = { currentDialogEvent = null },
-    )
-}
-
-@Composable
-private fun ShowBookSearchAlertDialog(
-    dialogEvent: BookSearchEvent.NavigationEvent?,
-    context: Context,
-    onConfirmClick: () -> Unit,
-) {
-    dialogEvent?.let { event ->
-        when (event) {
-            is BookSearchEvent.NavigationEvent.NavigateToDetail -> {
-                AlertDialog(
-                    title = context.getString(R.string.navigation_success),
-                    message = context.getString(R.string.navigation_message, event.book.title),
-                    onConfirmClick = {
-                        onConfirmClick()
-                    },
-                )
-            }
-
-            is BookSearchEvent.NavigationEvent.ShowNavigationFailedDialog -> {
-                AlertDialog(
-                    title = context.getString(R.string.navigation_failed),
-                    message = event.message ?: context.getString(R.string.unknown_error),
-                    onConfirmClick = { onConfirmClick() },
-                )
             }
         }
     }

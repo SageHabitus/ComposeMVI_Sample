@@ -9,6 +9,5 @@ sealed interface BookmarkEvent {
 
     sealed interface NavigationEvent : BookmarkEvent {
         data class NavigateToDetail(val book: BookmarkedBookItemViewState) : NavigationEvent
-        data class ShowNavigationFailedDialog(val message: String?) : NavigationEvent
     }
 }
