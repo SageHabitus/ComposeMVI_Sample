@@ -110,16 +110,10 @@ class BookmarkedBookViewModel @Inject constructor(
         toggleBookmarkUseCase
             .execute(book.isbn, book.isBookmarked)
             .asFlow()
-            .map<Unit, BookmarkPartialStateChange> { BookmarkPartialStateChange.BookmarkActionResult.Success }
-            .catchMap { throwable ->
-                BookmarkPartialStateChange.BookmarkActionResult.Failed(throwable.message)
-            }
+            .map { BookmarkPartialStateChange.BookmarkActionResult.Success }
+            .startWith(BookmarkPartialStateChange.BookmarkActionResult.Loading)
 
     private fun navigateToDetail(book: BookmarkedBookItemViewState): Flow<BookmarkPartialStateChange> =
         BookmarkPartialStateChange.NavigateToDetail.Success(book = book)
             .asFlow()
-            .map { it as BookmarkPartialStateChange }
-            .catchMap { throwable ->
-                BookmarkPartialStateChange.NavigateToDetail.Failed(throwable.message)
-            }
 }

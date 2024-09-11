@@ -1,7 +1,16 @@
 package com.example.composemvi.presentation.ui.feature.bookdetail
 
+
 sealed interface BookDetailPartialStateChange {
     fun reduce(oldState: BookDetailState): BookDetailState
+
+    sealed interface LoadingDialog : BookDetailPartialStateChange {
+        data object Show : LoadingDialog {
+            override fun reduce(oldState: BookDetailState) = oldState.copy(
+                viewState = oldState.viewState,
+            )
+        }
+    }
 
     sealed interface FetchBook : BookDetailPartialStateChange {
         override fun reduce(oldState: BookDetailState): BookDetailState {

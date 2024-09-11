@@ -116,12 +116,6 @@ class BookSearchViewModel @Inject constructor(
     private fun updateQuery(query: String): Flow<BookSearchPartialStateChange> =
         BookSearchPartialStateChange.UpdateQuery.Success(query = query)
             .asFlow()
-            .map { it as BookSearchPartialStateChange }
-            .catchMap { throwable ->
-                BookSearchPartialStateChange.UpdateQuery.Failed(
-                    throwable.message,
-                )
-            }
 
     private suspend fun searchBooks(query: String): Flow<BookSearchPartialStateChange> = searchBooksUseCase
         .execute(query)
@@ -131,7 +125,7 @@ class BookSearchViewModel @Inject constructor(
         }
         .asFlow()
         .map { pagingData -> BookSearchPartialStateChange.SearchResult.Success(books = pagingData) }
-        .startWith(BookSearchPartialStateChange.SearchResult.Loading)
+        .startWith(BookSearchPartialStateChange.LoadingDialog.Show)
         .catchMap { throwable ->
             BookSearchPartialStateChange.SearchResult.Failed(
                 throwable.message,
@@ -143,6 +137,7 @@ class BookSearchViewModel @Inject constructor(
             .execute(book.isbn, book.isBookmarked)
             .asFlow()
             .map<Unit, BookSearchPartialStateChange> { BookSearchPartialStateChange.BookmarkResult.Success }
+            .startWith(BookSearchPartialStateChange.BookmarkResult.Loading)
             .catchMap { throwable ->
                 BookSearchPartialStateChange.BookmarkResult.Failed(
                     throwable.message,
@@ -152,10 +147,4 @@ class BookSearchViewModel @Inject constructor(
     private fun navigateToDetail(book: BookItemViewState): Flow<BookSearchPartialStateChange> =
         BookSearchPartialStateChange.NavigateToDetail.Success(book = book)
             .asFlow()
-            .map { it as BookSearchPartialStateChange }
-            .catchMap { throwable ->
-                BookSearchPartialStateChange.NavigateToDetail.Failed(
-                    throwable.message,
-                )
-            }
 }

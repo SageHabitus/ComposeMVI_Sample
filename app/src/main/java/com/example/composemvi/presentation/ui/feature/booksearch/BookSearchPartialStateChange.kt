@@ -6,6 +6,14 @@ import kotlinx.coroutines.flow.Flow
 sealed interface BookSearchPartialStateChange {
     fun reduce(oldState: BookSearchState): BookSearchState
 
+    sealed interface LoadingDialog : BookSearchPartialStateChange {
+        data object Show : LoadingDialog {
+            override fun reduce(oldState: BookSearchState) = oldState.copy(
+                viewState = oldState.viewState,
+            )
+        }
+    }
+
     sealed interface SearchResult : BookSearchPartialStateChange {
         override fun reduce(oldState: BookSearchState): BookSearchState {
             return when (this) {
@@ -16,16 +24,11 @@ sealed interface BookSearchPartialStateChange {
                 is Failed -> oldState.copy(
                     viewState = BookSearchViewState.Failed(errorMessage),
                 )
-
-                is Loading -> oldState.copy(
-                    viewState = BookSearchViewState.Loading,
-                )
             }
         }
 
         data class Success(val books: Flow<PagingData<BookItemViewState>>) : SearchResult
         data class Failed(val errorMessage: String? = null) : SearchResult
-        data object Loading : SearchResult
     }
 
     sealed interface BookmarkResult : BookSearchPartialStateChange {
@@ -38,16 +41,11 @@ sealed interface BookSearchPartialStateChange {
                 is Failed -> oldState.copy(
                     viewState = BookSearchViewState.Failed(errorMessage),
                 )
-
-                is Loading -> oldState.copy(
-                    viewState = BookSearchViewState.Loading,
-                )
             }
         }
 
         data object Success : BookmarkResult
         data class Failed(val errorMessage: String? = null) : BookmarkResult
-        data object Loading : BookmarkResult
     }
 
     sealed interface UpdateQuery : BookSearchPartialStateChange {
