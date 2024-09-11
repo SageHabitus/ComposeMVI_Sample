@@ -1,6 +1,5 @@
 package com.example.composemvi.presentation.mapper
 
-import com.example.composemvi.domain.model.BookDomainModel
 import com.example.composemvi.presentation.model.BookPresentationModel
 import com.example.composemvi.presentation.ui.feature.bookdetail.BookDetailItemViewState
 import com.example.composemvi.presentation.ui.feature.bookmark.BookmarkedBookItemViewState
@@ -36,7 +35,7 @@ fun BookPresentationModel.toBookmarkViewState(): BookmarkedBookItemViewState {
     )
 }
 
-fun BookDomainModel.toDetailBookViewState(): BookDetailItemViewState {
+fun BookPresentationModel.toDetailBookViewState(): BookDetailItemViewState {
     return BookDetailItemViewState(
         isbn = isbn,
         title = title,

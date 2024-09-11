@@ -1,13 +1,12 @@
 package com.example.composemvi.data.remote.book
 
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_REMOTE_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getJsonStringFromResource
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookResponse
 import com.example.composemvi.data.source.remote.api.BookApi
+import com.example.composemvi.data.source.remote.exception.ApiExceptionMapper
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.INTERNAL_SERVER_ERROR_MESSAGE
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TIMEOUT_ERROR_MESSAGE
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.TOO_MANY_REQUESTS_MESSAGE
 import com.example.composemvi.data.source.remote.exception.ApiExceptionMessage.UNAUTHORIZED_MESSAGE
-import com.example.composemvi.data.source.remote.exception.ApiExceptionMapper
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
@@ -18,15 +17,13 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import okio.buffer
-import okio.source
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import java.nio.charset.StandardCharsets
+import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -34,13 +31,13 @@ class BookApiTest {
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var bookApi: BookApi
-    private lateinit var dummyBooks: String
+    private lateinit var bookMockResponse: MockResponse
 
     @Before
     fun setup() {
         mockWebServer = MockWebServer()
 
-        dummyBooks = getJsonStringFromResource(BOOK_REMOTE_TEST_JSON)
+        bookMockResponse = getMockBookResponse()
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
 
@@ -61,24 +58,17 @@ class BookApiTest {
         mockWebServer.shutdown()
     }
 
-    private fun loadJsonFromResource(fileName: String): String {
-        val inputStream = javaClass.classLoader?.getResourceAsStream(fileName)
-        val source = inputStream?.source()?.buffer()
-        return source?.readString(StandardCharsets.UTF_8) ?: ""
-    }
-
     @Test
     fun `책 검색 API 호출 시 정상 응답을 처리해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(200)
-            .setBody(dummyBooks)
+        val bookMockResponse = getMockBookResponse(200)
 
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse)
 
         val result = bookApi.searchBooks("query", 1, 10)
 
         assertEquals(80, result.documents.size)
-        val parsedJson = Json.parseToJsonElement(dummyBooks).jsonObject
+
+        val parsedJson = Json.parseToJsonElement(bookMockResponse.getBody()!!.readUtf8()).jsonObject
         val firstBookTitle =
             parsedJson["documents"]?.jsonArray?.get(0)?.jsonObject?.get("title")?.jsonPrimitive?.content
         val secondBookTitle =
@@ -90,11 +80,11 @@ class BookApiTest {
 
     @Test
     fun `클라이언트 401 에러 발생 시 UnauthorizedException을 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(401)
-            .setBody(UNAUTHORIZED_MESSAGE)
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(
+            bookMockResponse
+                .setBody(UNAUTHORIZED_MESSAGE)
+                .setResponseCode(401),
+        )
 
         val exception = runCatching {
             bookApi.searchBooks("query", 1, 10)
@@ -108,11 +98,9 @@ class BookApiTest {
 
     @Test
     fun `500 에러 발생 시 InternalServerException을 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(500)
-            .setBody(INTERNAL_SERVER_ERROR_MESSAGE)
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(
+            bookMockResponse.setBody(INTERNAL_SERVER_ERROR_MESSAGE),
+        )
 
         val exception = runCatching {
             bookApi.searchBooks("query", 1, 10)
@@ -126,10 +114,7 @@ class BookApiTest {
 
     @Test
     fun `타임아웃 에러 발생 시 TimeoutException을 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(200)
-            .setBody(dummyBooks)
-            .setBodyDelay(5, java.util.concurrent.TimeUnit.SECONDS)
+        val mockResponse = bookMockResponse.setBodyDelay(5, TimeUnit.SECONDS)
 
         mockWebServer.enqueue(mockResponse)
 

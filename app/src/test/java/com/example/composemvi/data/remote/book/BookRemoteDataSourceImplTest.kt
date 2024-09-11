@@ -1,7 +1,6 @@
 package com.example.composemvi.data.remote.book
 
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_REMOTE_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getJsonStringFromResource
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookResponse
 import com.example.composemvi.data.source.remote.api.BookApi
 import com.example.composemvi.data.source.remote.exception.RemoteApiException
 import com.example.composemvi.data.source.remote.model.BookResponseModel
@@ -18,6 +17,7 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -26,13 +26,13 @@ class BookRemoteDataSourceImplTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var bookRemoteDataSource: BookRemoteDataSource
     private lateinit var bookApi: BookApi
-    private lateinit var dummyBooks: String
+    private lateinit var bookMockResponse: MockResponse
 
     @Before
     fun setup() {
         mockWebServer = MockWebServer()
 
-        dummyBooks = getJsonStringFromResource(BOOK_REMOTE_TEST_JSON)
+        bookMockResponse = getMockBookResponse()
         val json = Json { ignoreUnknownKeys = true }
         val contentType = "application/json".toMediaType()
 
@@ -57,15 +57,11 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `책 검색 API 정상 호출 시 결과를 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(200)
-            .setBody(dummyBooks)
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse)
 
         val result = bookRemoteDataSource.searchBooks("query", 1, 10)
 
-        val parsedData = Json.decodeFromString<BookResponseModel>(dummyBooks)
+        val parsedData = Json.decodeFromString<BookResponseModel>(bookMockResponse.getBody()!!.readUtf8())
 
         val firstBookTitle = parsedData.documents[0].title
         val secondBookTitle = parsedData.documents[1].title
@@ -77,11 +73,7 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `404 에러 발생 시 NotFoundException 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(404)
-            .addHeader("Content-Type", "application/json")
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse.setResponseCode(404))
 
         val exception = runCatching {
             bookRemoteDataSource.searchBooks("query", 1, 10)
@@ -92,11 +84,7 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `401 에러 발생 시 UnauthorizedException 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(401)
-            .addHeader("Content-Type", "application/json")
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse.setResponseCode(401))
 
         val exception = runCatching {
             bookRemoteDataSource.searchBooks("query", 1, 10)
@@ -107,11 +95,7 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `500 에러 발생 시 InternalServerException 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(500)
-            .addHeader("Content-Type", "application/json")
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse.setResponseCode(500))
 
         val exception = runCatching {
             bookRemoteDataSource.searchBooks("query", 1, 10)
@@ -122,10 +106,8 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `타임아웃 에러 발생 시 TimeoutException 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(200)
-            .setBody(dummyBooks)
-            .setBodyDelay(5, java.util.concurrent.TimeUnit.SECONDS)
+        val mockResponse = bookMockResponse
+            .setBodyDelay(5, TimeUnit.SECONDS)
 
         mockWebServer.enqueue(mockResponse)
 
@@ -138,11 +120,7 @@ class BookRemoteDataSourceImplTest {
 
     @Test
     fun `너무 많은 요청으로 429 에러 발생 시 TooManyRequestsException 반환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse()
-            .setResponseCode(429)
-            .addHeader("Content-Type", "application/json")
-
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse.setResponseCode(429))
 
         val exception = runCatching {
             bookRemoteDataSource.searchBooks("query", 1, 10)

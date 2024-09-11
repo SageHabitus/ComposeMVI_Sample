@@ -1,12 +1,9 @@
-package com.example.composemvi.data.book.dummy
+package com.example.composemvi.data.book.dummy.loader
 
 import kotlinx.serialization.json.Json
 import java.io.InputStream
 
 object TestResourceLoader {
-
-    const val BOOK_LOCAL_TEST_JSON = "dummy_books_local.json"
-    const val BOOK_REMOTE_TEST_JSON = "dummy_books_remote.json"
 
     fun getJsonStringFromResource(fileName: String): String {
         val classLoader = Thread.currentThread().contextClassLoader

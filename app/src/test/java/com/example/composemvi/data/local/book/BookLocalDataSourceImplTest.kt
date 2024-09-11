@@ -2,8 +2,7 @@ package com.example.composemvi.data.local.book
 
 import android.database.sqlite.SQLiteException
 import androidx.paging.PagingSource
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_LOCAL_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getListFromResource
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookEntities
 import com.example.composemvi.data.source.local.dao.BookDao
 import com.example.composemvi.data.source.local.entity.BookEntity
 import com.example.composemvi.data.source.local.exception.RoomDatabaseException
@@ -29,7 +28,7 @@ class BookLocalDataSourceImplTest {
         dao = mock(BookDao::class.java)
         dataSource = BookLocalDataSourceImpl(dao)
 
-        dummyBooks = getListFromResource<BookEntity>(BOOK_LOCAL_TEST_JSON)
+        dummyBooks = getMockBookEntities()
     }
 
     @Test

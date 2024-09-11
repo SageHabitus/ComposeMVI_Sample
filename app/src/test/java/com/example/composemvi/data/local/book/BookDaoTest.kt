@@ -4,8 +4,7 @@ import androidx.paging.PagingSource
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SmallTest
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_LOCAL_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getListFromResource
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookEntities
 import com.example.composemvi.data.source.local.dao.BookDao
 import com.example.composemvi.data.source.local.db.LocalDatabase
 import com.example.composemvi.data.source.local.entity.BookEntity
@@ -37,7 +36,7 @@ class BookDaoTest {
 
         dao = database.bookDao()
         javaClass
-        dummyBooks = getListFromResource<BookEntity>(BOOK_LOCAL_TEST_JSON)
+        dummyBooks = getMockBookEntities()
     }
 
     @After

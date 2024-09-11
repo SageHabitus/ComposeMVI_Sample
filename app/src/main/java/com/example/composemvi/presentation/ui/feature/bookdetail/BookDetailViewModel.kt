@@ -9,6 +9,7 @@ import com.example.composemvi.core.extension.throttleFirst
 import com.example.composemvi.domain.usecase.GetBookUseCase
 import com.example.composemvi.domain.usecase.ToggleBookmarkUseCase
 import com.example.composemvi.presentation.mapper.toDetailBookViewState
+import com.example.composemvi.presentation.mapper.toPresentationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -95,6 +96,7 @@ class BookDetailViewModel @Inject constructor(
     } else {
         getBookUseCase
             .execute(isbn)
+            .toPresentationModel()
             .toDetailBookViewState()
             .asFlow()
             .map<BookDetailItemViewState, BookDetailPartialStateChange> { book ->

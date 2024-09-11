@@ -3,16 +3,14 @@ package com.example.composemvi.data.book
 import android.util.Log
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_LOCAL_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.BOOK_REMOTE_TEST_JSON
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getJsonStringFromResource
-import com.example.composemvi.data.book.dummy.TestResourceLoader.getListFromResource
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookEntities
+import com.example.composemvi.data.book.dummy.book.DummyBooks.getMockBookResponse
 import com.example.composemvi.data.book.paging.BookDiffCallback
-import com.example.composemvi.util.TestPagingDataDiffer
 import com.example.composemvi.data.mapper.toDataModel
 import com.example.composemvi.data.repository.BookRepository
 import com.example.composemvi.data.source.local.entity.BookEntity
 import com.example.composemvi.util.MainCoroutineRule
+import com.example.composemvi.util.TestPagingDataDiffer
 import io.mockk.mockkStatic
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
@@ -35,8 +33,8 @@ class BookRepositoryTest {
     private lateinit var repository: BookRepository
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var dummyBooksLocal: List<BookEntity>
-    private lateinit var dummyBooksRemote: String
+    private lateinit var bookEntities: List<BookEntity>
+    private lateinit var bookMockResponse: MockResponse
 
     @get:Rule
     val coroutineRule = MainCoroutineRule()
@@ -46,8 +44,8 @@ class BookRepositoryTest {
         MockitoAnnotations.openMocks(this)
         mockWebServer = MockWebServer()
         mockkStatic(Log::class)
-        dummyBooksLocal = getListFromResource(BOOK_LOCAL_TEST_JSON)
-        dummyBooksRemote = getJsonStringFromResource(BOOK_REMOTE_TEST_JSON)
+        bookEntities = getMockBookEntities()
+        bookMockResponse = getMockBookResponse()
     }
 
     @After
@@ -57,7 +55,7 @@ class BookRepositoryTest {
 
     @Test
     fun `페이징 데이터를 성공적으로 로드하고 크기를 확인해야 한다`() = runBlocking {
-        val pagingData = PagingData.from(dummyBooksLocal).map { it.toDataModel() }
+        val pagingData = PagingData.from(bookEntities).map { it.toDataModel() }
 
         `when`(repository.getAllBooks()).thenReturn(flowOf(pagingData))
 
@@ -73,15 +71,14 @@ class BookRepositoryTest {
             }
         }
 
-        assertEquals(dummyBooksLocal.size, itemCount)
+        assertEquals(bookEntities.size, itemCount)
     }
 
     @Test
     fun `리모트 API에서 책 데이터를 성공적으로 로드하고 변환해야 한다`() = runBlocking {
-        val mockResponse = MockResponse().setResponseCode(200).setBody(dummyBooksRemote)
-        mockWebServer.enqueue(mockResponse)
+        mockWebServer.enqueue(bookMockResponse)
 
-        val pagingData = PagingData.from(dummyBooksLocal).map { it.toDataModel() }
+        val pagingData = PagingData.from(bookEntities).map { it.toDataModel() }
 
         `when`(repository.searchAndCacheBooks("query")).thenReturn(flowOf(pagingData))
 
@@ -98,6 +95,6 @@ class BookRepositoryTest {
             }
         }
 
-        assertEquals(dummyBooksLocal.size, itemCount)
+        assertEquals(bookEntities.size, itemCount)
     }
 }
