@@ -51,7 +51,7 @@ class BookSearchViewModel @Inject constructor(
 
         state = dispatchIntentFlow()
             .shareIn(viewModelScope, SharingStarted.WhileSubscribed())
-            .toSearchPartialStateChangeFlow()
+            .toPartialStateChangeFlow()
             .sendSingleEvent()
             .scan(initViewState) { state, change -> change.reduce(state) }
             .debugLog("BookSearchState")
@@ -69,7 +69,7 @@ class BookSearchViewModel @Inject constructor(
         intent.filterIsInstance<BookSearchIntent.UpdateQuery>(),
     )
 
-    private fun SharedFlow<BookSearchIntent>.toSearchPartialStateChangeFlow(): Flow<BookSearchPartialStateChange> =
+    private fun SharedFlow<BookSearchIntent>.toPartialStateChangeFlow(): Flow<BookSearchPartialStateChange> =
         merge(
             filterIsInstance<BookSearchIntent.LoadInitialBooks>()
                 .flatMapConcat { intent -> loadInitialBooks(intent.query) },
