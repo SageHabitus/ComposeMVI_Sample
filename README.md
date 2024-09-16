@@ -53,53 +53,6 @@ MVI는 이러한 문제를 해결하기 위해 다음과 같은 장점을 제공
 
 이 프로젝트는 **Google Architecture** 원칙을 준수하며, `core`, `data`, `domain`, `presentation`의 네 가지 모듈로 구성됩니다.
 
-```
-app/
-├── manifests/
-├── kotlin+java/
-│   └── com/
-│       └── example/
-│           └── composemvi/
-│               ├── core/
-│               │   └── ComposeMVIApplication.kt
-│               ├── data/
-│               │   ├── di/
-│               │   ├── mapper/
-│               │   ├── model/
-│               │   ├── paging/
-│               │   ├── repository/
-│               │   └── source/
-│               │       ├── local/
-│               │       │   ├── converter/
-│               │       │   ├── dao/
-│               │       │   ├── db/
-│               │       │   ├── di/
-│               │       │   ├── entity/
-│               │       │   └── source/
-│               │       └── remote/
-│               │           ├── api/
-│               │           ├── di/
-│               │           ├── model/
-│               │           └── source/
-│               ├── domain/
-│               │   ├── mapper/
-│               │   ├── model/
-│               │   └── usecase/
-│               └── presentation/
-│                   ├── di/
-│                   ├── mapper/
-│                   ├── model/
-│                   └── ui/
-│                       ├── common/
-│                       ├── feature/
-│                       │   ├── bookdetail/
-│                       │   ├── bookmark/
-│                       │   └── booksearch/
-│                       ├── navigation/
-│                       └── theme/
-└── res/
-
-```
 
 ### **모듈별 설명**
 
