@@ -1,4 +1,4 @@
-### 📚 책 검색 애플리케이션 ( Jetpack Compose with Advanced MVI Concepts )
+### 📚 책 검색 애플리케이션 (Jetpack Compose with Advanced MVI Concepts)
 
 
 본 애플리케이션은 보일러 플레이트 코드가 많지만 의도한 것임을 알려드립니다. **Paging 3**와 **Room**, **Retrofit** 등의 최신 안드로이드 기술 스택을 활용하여 대규모 데이터 처리와 오프라인 저장소를 효율적으로 관리합니다. 본 애플리케이션은 효율적이고 일관된 사용자 경험을 제공하기 위해 설계되었고 최대한 구글아키텍쳐를 적용하기 위해 노력했습니다.
@@ -18,7 +18,7 @@
 
 - **Jetpack Compose UI 📱**: 선언적 UI 프레임워크인 Jetpack Compose를 사용하여 Android UI를 간결하고 효율적으로 구성합니다. 코드 재사용성을 높이고, UI 업데이트의 복잡성을 줄입니다.
 
-- **CI 자동화 🚀**: GitHub Actions를 활용해 Pull Request 시 자동 빌드 및 테스트를 수행합니다. 이를 통해 지속적인 통합과 배포 파이프라인을 구현하여 코드 품질을 유지합니다.
+- **CI 자동화 🚀**: GitHub Actions를 활용해 Pull Request 시 자동 빌드 및 테스트를 수행합니다.
 
 ## 기술 스택 🛠️
 
@@ -26,11 +26,11 @@
 - **UI**: Jetpack Compose
 - **네트워크 통신**: Retrofit, OkHttp, Corouitne, Flow
 - **비동기 작업**: Corouitne, Flow, StateFlow, SharedFlow
-- **JSON 파싱**: Moshi, Kotlin Serialization, Parcelable
+- **JSON 파싱**: Kotlin Serialization, Parcelable
 - **로컬 데이터베이스**: Room
 - **이미지 로딩**: Coil
 - **의존성 주입**: Hilt
-- **페이징 처리**: Paging 3(+ RemoteMediator)
+- **페이징 처리**: Paging 3 (+RemoteMediator)
 - **테스트**: JUnit, Espresso, Mokito, Compose UI Test
 - **CI**: GitHub Actions
 
