@@ -18,7 +18,7 @@
 
 - **Jetpack Compose UI 📱**: 선언적 UI 프레임워크인 Jetpack Compose를 사용하여 Android UI를 간결하고 효율적으로 구성합니다. 코드 재사용성을 높이고, UI 업데이트의 복잡성을 줄입니다.
 
-- **CI/CD 자동화 🚀**: GitHub Actions를 활용해 Pull Request 시 자동 빌드 및 테스트를 수행합니다. 이를 통해 지속적인 통합과 배포 파이프라인을 구현하여 코드 품질을 유지합니다.
+- **CI 자동화 🚀**: GitHub Actions를 활용해 Pull Request 시 자동 빌드 및 테스트를 수행합니다. 이를 통해 지속적인 통합과 배포 파이프라인을 구현하여 코드 품질을 유지합니다.
 
 ## 기술 스택 🛠️
 
@@ -32,7 +32,7 @@
 - **의존성 주입**: Hilt
 - **페이징 처리**: Paging 3(+ RemoteMediator)
 - **테스트**: JUnit, Espresso, Mokito, Compose UI Test
-- **CI/CD**: GitHub Actions
+- **CI**: GitHub Actions
 
 ## MVI 아키텍처의 장점 및 MVVM의 한계 🚀
 
@@ -111,7 +111,7 @@ app/
 
 - **presentation**: UI를 관리하며, Jetpack Compose를 사용하여 화면을 구성합니다. MVI 패턴을 구현하여 UI 상태와 사용자 이벤트 간의 상호작용을 관리합니다.
 
-## CI/CD 및 테스트 🧪
+## CI 및 테스트 🧪
 
 - **GitHub Actions**: PR 생성 시 자동 빌드 및 테스트를 수행하여 코드 품질을 유지합니다. 
 - **Compose UI Test**: Jetpack Compose로 작성된 UI의 테스트를 지원합니다.
